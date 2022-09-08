@@ -39,7 +39,7 @@ class OrdersController extends Controller
         $res = $this->getService('Payment')->redirect();
         if($res=='success'){
             echo 1;
-            header('location: http://127.0.0.1:8087/order/success');
+            header('location: http://1.116.149.168//order/success');
         }
     }
     // 验证支付状态
