@@ -10,7 +10,7 @@ Route::get('/store/{id}', [App\Http\Controllers\Home\StoresController::class,'sh
 Route::get('/goods', [App\Http\Controllers\Home\GoodsController::class,'goods'])->name('home.goods.index'); // 商品列表 | 搜索
 Route::get('/goods/{id}', [App\Http\Controllers\Home\GoodsController::class,'show'])->name('home.goods.show'); // 商品详情
 Route::get('/goods_comments/{id}', [App\Http\Controllers\Home\GoodsController::class,'goods_comments'])->name('home.goods.comments'); // 商品评论
-Route::get('/is_fav', [App\Http\Conftrollers\Home\FavoritesController::class,'is_fav'])->name('home.user.isfav'); // 是否收藏关注
+Route::get('/is_fav', [App\Http\Controllers\Home\FavoritesController::class,'is_fav'])->name('home.user.isfav'); // 是否收藏关注
 Route::get('/cart_count', [App\Http\Controllers\Home\CartsController::class,'count'])->name('home.cart.count'); // 统计购物车数量
 Route::get('/integral/home', [App\Http\Controllers\Home\IntegralController::class,'home'])->name('home.integral.home'); // 积分商城
 Route::get('/integral/class', [App\Http\Controllers\Home\IntegralController::class,'integral_class'])->name('home.integral.class');
