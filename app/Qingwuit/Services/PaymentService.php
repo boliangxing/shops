@@ -193,7 +193,7 @@ class PaymentService extends BaseService
             $transaction->setAmount($amount)->setItemList($itemList)->setInvoiceNumber(uniqid());
 
             $redirectUrls = new RedirectUrls();
-            $redirectUrls->setReturnUrl('http://1.116.149.168/api/redirect')->setCancelUrl(self::accept_url . '/?success=false');
+            $redirectUrls->setReturnUrl('https://crystals.fit/api/redirect')->setCancelUrl(self::accept_url . '/?success=false');
 
             $payment = new Payment();
             $payment->setIntent('sale')->setPayer($payer)->setRedirectUrls($redirectUrls)->setTransactions([$transaction]);
