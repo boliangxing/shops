@@ -1,17 +1,11 @@
 <template>
-    <div class="shop_foot center1200">
-        <ul>
-            <li><router-link to="">500强企业 品质保证</router-link></li>
-            <li><router-link to="">7天退货 15天换货</router-link></li>
-            <li><router-link to="">99元起免运费</router-link></li>
-            <li><router-link to="">448家维修网点 全国联保</router-link></li>
-        </ul>
-        <div class="foot_copyright">
-            <p>448家维修网点 全国联保 隐私政策 服务协议 Copyright © 2012-2016 {{common.web_name}} 版权所有 保留一切权利</p>
-            <p>公安备案 苏公网安备 32011402010009号 | {{common.icp}} | 增值电信业务经营许可证：苏B2-20130048 | 网络文化经营许可证：苏网文[2015] 1599-026号</p>
-        </div>
-        <el-backtop />
-    </div>
+    <nut-tabbar @tab-switch="tabSwitch" style="position:fixed;bottom:0;z-index:999;bottom:0px;left:0;right:0;">
+        <nut-tabbar-item tab-title="首页" icon="home"></nut-tabbar-item>
+        <nut-tabbar-item tab-title="分类" icon="category"></nut-tabbar-item>
+        <nut-tabbar-item tab-title="购物车" icon="cart"></nut-tabbar-item>
+        <nut-tabbar-item tab-title="我的" icon="my"></nut-tabbar-item>
+    </nut-tabbar>
+
 </template>
 
 <script>
@@ -19,10 +13,18 @@ import { useStore } from 'vuex'
 import {reactive,computed,getCurrentInstance} from "vue"
 export default {
     setup() {
+        function tabSwitch(item, index) {
+            console.log(item, index);
+        }
+
+        return {
+            tabSwitch,
+        };
         const store = useStore()
-        const common = reactive(computed(()=>store.state.init.common.common)) 
+        const common = reactive(computed(()=>store.state.init.common.common))
         return {common}
     }
+
 };
 </script>
 <style lang="scss" scoped>

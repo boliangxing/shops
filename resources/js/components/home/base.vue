@@ -1,7 +1,7 @@
 <template>
     <div class="home_default">
         <top />
-        <div class="padding_content"></div>
+<!--        <div class="padding_content"></div>-->
         <slot name="main"></slot>
         <foot />
     </div>

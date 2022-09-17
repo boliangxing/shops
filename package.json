@@ -21,6 +21,7 @@
     },
     "dependencies": {
         "@element-plus/icons": "0.0.11",
+        "@nutui/nutui": "^3.2.2",
         "dayjs": "^1.10.7",
         "laravel-mix-polyfill": "^3.0.1",
         "node-sass": "^7.0.0",

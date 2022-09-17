@@ -5,15 +5,13 @@
                 <head-view />
                 <router-view></router-view>
             </template>
-        </base-view> 
+        </base-view>
     </div>
 </template>
 
 <script>
 import baseView from "@/components/home/base"
 import headView from "@/components/home/head"
-
-import {reactive,getCurrentInstance} from "vue"
 export default {
     components:{baseView,headView},
 }

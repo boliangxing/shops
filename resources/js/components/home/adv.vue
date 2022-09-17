@@ -1,7 +1,7 @@
 <template>
-    <div class="adv" :style="{marginTop:'40px',marginBottom:'40px'}">
-        <router-link :to="adv.url||'#'"><el-image lazy :src="adv.image||''" :style="'height:'+height+';width:'+width+';'" fit="cover"></el-image></router-link>
-    </div>
+<!--    <div class="adv" :style="{marginTop:'40px',marginBottom:'40px'}">-->
+<!--        <router-link :to="adv.url||'#'"><el-image lazy :src="adv.image||''" :style="'height:'+height+';width:'+width+';'" fit="cover"></el-image></router-link>-->
+<!--    </div>-->
 </template>
 
 <script>
