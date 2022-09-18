@@ -1,12 +1,10 @@
 <template>
-    <div class="home_login" :style="'background: url('+ require('@/assets/Home/user_login__bgs.png').default +');'">
-        <div class="login_block w1200">
+    <div class="home_login" >
+        <div class="login_block ">
             <div class="login_item">
                 <div class="login_title">
                     <ul>
                         <li class="red">帐号登录</li>
-                        <li>|</li>
-                        <li>扫码登录</li>
                     </ul>
                 </div>
                 <div class="login_input">
@@ -15,17 +13,11 @@
                 </div>
 
                 <div class="login_btn" @click="login">登 录</div>
-                <nut-button type="default">默认按钮</nut-button>
 
                 <div class="login_btn_b">
                     <router-link to="/register">注册</router-link>|<router-link to="/forget_password">忘记密码？</router-link>
                 </div>
 
-                <el-divider>其他登录方式</el-divider>
-                <div class="other_login_block" @click="wechatLogin()">
-                    <img width="35" :src="require('@/assets/Home/wechat.png').default" alt="">
-                    <p>微信登录</p>
-                </div>
             </div>
         </div>
     </div>

@@ -3,7 +3,6 @@
         <template #left>
         </template>
         <template #right>
-            <nut-icon class="right" name="share-n"></nut-icon>
         </template>
     </nut-navbar>
 <!--    <div class="head">-->

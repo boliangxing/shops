@@ -1,12 +1,15 @@
 <template>
+    <head-view />
     <div class="default_main">
+
         <banner-view :banner="[{image:require('@/assets/Home/default_banner.jpg').default}]" />
         <banner-adv :index_adv="[{image:require('@/assets/Home/banner_b1.jpg').default},{image:require('@/assets/Home/banner_b2.jpg').default},{image:require('@/assets/Home/banner_b3.jpg').default}]" />
 
         <div class="index_bg">
             <div class="goods_class_list " v-for="(v,k) in data.goods" :key="k">
                 <div v-if="v.goods && v.goods.length>0">
-                    <div class="title">{{v.name||'加载中...'}}</div>
+                     <div class="title">{{v.name||'加载中...'}}</div>
+
                     <div class="index_class_goods_right">
                         <ul>
                             <li v-for="(vo,key) in v.goods" :key="key" @click="toGoods(vo.id)" style="display: block">
@@ -32,16 +35,18 @@
 import bannerView from "@/components/home/banner"
 import bannerAdv from "@/components/home/banner_adv"
 import advView from "@/components/home/adv"
+import headView from "@/components/home/head"
 import {_push} from "@/plugins/config"
 import {reactive,onMounted,getCurrentInstance} from "vue"
 export default {
-    components:{bannerView,bannerAdv,advView},
+    components:{bannerView,bannerAdv,advView,headView},
     setup(props) {
         const {ctx,proxy} = getCurrentInstance()
         const data = reactive({
             goods:[],
             classLeftAdv:[],
         })
+
         onMounted( async ()=>{
             const resp = await proxy.R.get('/home')
             data.goods = resp.goods

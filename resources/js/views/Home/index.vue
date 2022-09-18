@@ -2,7 +2,6 @@
     <div class="home">
         <base-view>
             <template #main>
-                <head-view />
                 <router-view></router-view>
             </template>
         </base-view>
@@ -11,9 +10,8 @@
 
 <script>
 import baseView from "@/components/home/base"
-import headView from "@/components/home/head"
 export default {
-    components:{baseView,headView},
+    components:{baseView},
 }
 </script>
 

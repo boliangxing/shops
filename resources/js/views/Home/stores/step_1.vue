@@ -1,5 +1,5 @@
 <template>
-    <div class="store_join w1200">
+    <div class="store_join">
         <div class="step_bar">
             <div class="step">
                 <div class="item check"><el-icon :size="16"><Reading /></el-icon>阅读协议</div>

@@ -1,7 +1,7 @@
 <template>
     <div>
         <Banner height="420" :banner="[{image:require('@/assets/Home/store_join_banner.jpg').default,name:'#'}]" />
-        <div class="store_join w1200">
+        <div class="store_join">
             <div class="store_join_btn float_left">
                 <h4>入驻申请</h4>
                 <p>未填写入驻申请资料时进行入驻资料填写</p>
@@ -34,10 +34,10 @@
                 <div class="item">其他</div>
                 <div class="clear"></div>
             </div>
-            
+
         </div>
     </div>
-    
+
 </template>
 
 <script>

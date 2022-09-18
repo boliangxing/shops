@@ -1,37 +1,37 @@
 <template>
     <div class="user_default">
-        <div class="user_default_in w1200">
-            <!-- 用户左侧栏目 -->
-            <div class="user_left">
-                <div class="user_info_block">
-                    <dl>
-                        <dt><img :src="data.user_info.avatar||require('@/assets/Home/user_default.png').default" alt=""></dt>
-                        <dd class="nickname">{{data.user_info.nickname||'加载中...'}}</dd>
-                        <dd class="edit_user_info"><router-link to="/user/info">编辑信息</router-link></dd>
-                    </dl>
-                    <div class="user_stepbar">
-                        <span>账号资料：</span><el-progress class="progress" :stroke-width="7" :status="data.user_info.check?'success':'warning'" :percentage="!data.user_info.check?50:100" />
-                    </div>
-                    <div class="user_safe">
-                        <span>账户安全：</span>
-                        <span class="safe_icon">
-                            <i :class="data.user_info.phone==''?'fa fa-phone-square':'fa fa-phone-square success'" />
-                            <i :class="!data.user_info.check?'fa fa-id-card-o':'fa fa-id-card-o success'" />
-                        </span>
-                    </div>
-                </div>
+        <div class="user_default_in ">
+<!--            &lt;!&ndash; 用户左侧栏目 &ndash;&gt;-->
+<!--            <div class="user_left">-->
+<!--                <div class="user_info_block">-->
+<!--                    <dl>-->
+<!--                        <dt><img :src="data.user_info.avatar||require('@/assets/Home/user_default.png').default" alt=""></dt>-->
+<!--                        <dd class="nickname">{{data.user_info.nickname||'加载中...'}}</dd>-->
+<!--                        <dd class="edit_user_info"><router-link to="/user/info">编辑信息</router-link></dd>-->
+<!--                    </dl>-->
+<!--                    <div class="user_stepbar">-->
+<!--                        <span>账号资料：</span><el-progress class="progress" :stroke-width="7" :status="data.user_info.check?'success':'warning'" :percentage="!data.user_info.check?50:100" />-->
+<!--                    </div>-->
+<!--                    <div class="user_safe">-->
+<!--                        <span>账户安全：</span>-->
+<!--                        <span class="safe_icon">-->
+<!--                            <i :class="data.user_info.phone==''?'fa fa-phone-square':'fa fa-phone-square success'" />-->
+<!--                            <i :class="!data.user_info.check?'fa fa-id-card-o':'fa fa-id-card-o success'" />-->
+<!--                        </span>-->
+<!--                    </div>-->
+<!--                </div>-->
 
-                <div class="user_nav">
-                    <div class="block" v-for="(v,k) in data.nav" :key="k">
-                        <div class="title">
-                            <img :src="require('@/assets/Home/usericon/'+v.icon).default" alt="">
-                            <!-- <i :type="v.icon" :class="'fa '+v.icon" /> -->
-                            <span>{{v.name}}</span>
-                        </div>
-                        <div class="nav_item" v-for="(vo,key) in v.children" :key="key"><router-link :to="vo.url">{{vo.name}}</router-link></div>
-                    </div>
-                </div>
-            </div>
+<!--                <div class="user_nav">-->
+<!--                    <div class="block" v-for="(v,k) in data.nav" :key="k">-->
+<!--                        <div class="title">-->
+<!--                            <img :src="require('@/assets/Home/usericon/'+v.icon).default" alt="">-->
+<!--                            &lt;!&ndash; <i :type="v.icon" :class="'fa '+v.icon" /> &ndash;&gt;-->
+<!--                            <span>{{v.name}}</span>-->
+<!--                        </div>-->
+<!--                        <div class="nav_item" v-for="(vo,key) in v.children" :key="key"><router-link :to="vo.url">{{vo.name}}</router-link></div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
 
             <div class="user_right">
                 <router-view></router-view>
@@ -122,7 +122,7 @@ export default {
 
         return {data}
     },
-    
+
 };
 </script>
 <style lang="scss" scoped>
@@ -234,7 +234,6 @@ export default {
 }
 .user_right{
     float: left;
-    width: 946px;
     padding-top: 20px;
 }
 

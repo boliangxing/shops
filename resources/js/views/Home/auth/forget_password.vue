@@ -1,6 +1,6 @@
 <template>
        <div class="home_login" :style="'background: url('+ require('@/assets/Home/user_login__bgs.png').default +');'">
-        <div class="login_block w1200">
+        <div class="login_block">
             <div class="login_item">
                 <div class="login_title">
                     <ul>
@@ -73,7 +73,7 @@ export default {
             if(!loginData.code){
                 proxy.$message.success(proxy.$t('msg.success'))
                 await store.commit('login/loginAfter',loginData)
-                router.push('/') 
+                router.push('/')
             }
         }
 
@@ -110,7 +110,7 @@ export default {
             color:#999;
         }
     }
-    
+
     .login_item{
         width: 400px;
         background: #fff;
