@@ -70,7 +70,7 @@ export default {
                 proxy.R.get('/callback/oauth/weixinweb',{code:route.query.code,inviter_id:route.query.inviter_id||0}).then( async res=>{
                     if(!res.code && res.access_token){
                         await store.commit('login/loginAfter',res)
-                        router.push('/')
+                        router.push('/user')
                     }
                 })
             }
