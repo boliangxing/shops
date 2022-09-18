@@ -51,7 +51,7 @@ export default {
             loginData.path = '/login'
             if(!loginData.code){
                 await store.commit('login/loginAfter',loginData)
-                router.push('/')
+                router.push('/user')
             }
 
         }
