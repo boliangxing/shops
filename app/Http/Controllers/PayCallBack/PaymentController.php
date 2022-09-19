@@ -12,4 +12,12 @@ class PaymentController extends Controller
     {
         return $this->getService('Payment')->payment($name, $device);
     }
+
+    public function paypal(){
+        echo 1;die;
+
+        return $this->getService('Payment')->paypal_cb();
+
+
+    }
 }

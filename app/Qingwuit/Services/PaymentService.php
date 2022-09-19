@@ -52,15 +52,33 @@ class PaymentService extends BaseService
 
     }
 
+    //paypal 回调
+    public function paypal_cb(){
+
+        $json=$this->get_JsonData();
+        Log::info($json['transactions']['description']);
+        try {
+            DB::beginTransaction();
+            $out_trade_no =$json['transactions']['description'];
+            if (empty($out_trade_no)) throw new \Exception('not found out_trade_no');
+            $orderPay = $this->getService('OrderPay', true)->where('pay_no', $out_trade_no)->first();
+            $paySuccessData = $this->paypalcheck($orderPay, $out_trade_no);
+            if (!$paySuccessData) throw new \Exception($paySuccessData['msg']);
+            DB::commit();
+            return $paySuccessData;
+        } catch (\Exception $e) {
+            DB::rollback();
+            Log::error($e->getMessage());
+            return $this->formatError($e->getMessage());
+        }
+    }
     // 第三方支付回调 paymentName [wechat | alipay]
     // $config 是多租户配置
     public function payment($paymentName = 'wechat', $device = 'web', $config = 'default')
     {
 
-        $json=$this->get_JsonData();
-        Log::info($json);
 
-            die;
+
         $this->setConfig($paymentName, $device, $config);
         $result = Pay::$paymentName($this->config)->callback(null, ['_config' => $config]);
 
@@ -319,6 +337,38 @@ class PaymentService extends BaseService
         return $paymentName == 'balance' ? $this->format() : Pay::$paymentName($this->config)->success();
     }
 
+    public function  paypalcheck($orderPay,$out_trade_no){
+        $orderPay->trade_no = $out_trade_no;
+        $orderPay->pay_status = 1;
+        $orderPay->pay_time = now();
+        $orderPay->balance = $orderPay->total;
+        $orderPay->save();
+        // 增加销量 - 其他支付回调的时候也要处理一遍
+        if (empty($orderPay->order_ids)) return $this->formatError('paySuccess $orderPay fail .');
+        $orderIds = explode(',', $orderPay->order_ids);
+        $orderGoodsList = $this->getService('OrderGoods', true)->whereIn('order_id', $orderIds)->get();
+        if (!$orderGoodsList->isEmpty()) {
+            $orderService = $this->getService('Order');
+            foreach ($orderGoodsList as $v) {
+                $orderService->orderSale($v->goods_id, $v->buy_num, 1);
+            }
+        }
+        // 订单状态修改
+        $this->getService('Order', true)->whereIn('id', $orderIds)->update([
+            'order_status'  =>  2,
+            'pay_time'      =>  now(),
+            'payment_name'  =>  'paypal',
+        ]);
+
+        // 分销处理
+        try {
+            $this->getService('Distribution')->addDisLog($orderIds);
+        } catch (\Exception $e) {
+            Log::error($e->getMessage());
+        }
+        return "success";
+
+    }
     // 检测是否订单支付成功
     public function check($orderId)
     {
