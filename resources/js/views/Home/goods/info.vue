@@ -8,7 +8,7 @@
             </el-breadcrumb>
         </div>
 
-        <div class="goods_info_top w1200">
+        <div class="goods_info_top ">
             <div class="goods_info_top_left" >
                 <div class="goods_image_item">
                     <pic-zoom :url="data.goods_info.goods_images_thumb_400 && data.goods_info.goods_images_thumb_400[data.chose_img_pos]" :highUrl="data.goods_info.goods_images_thumb_400 && data.goods_info.goods_images[data.chose_img_pos]"></pic-zoom>
@@ -39,7 +39,7 @@
                         <div class="goods_info_price"><span>商城价：</span>{{$t('btn.money')}}{{data.goods_info.goods_price||'0.00'}}</div>
                         <div class="goods_info_market_price"><span>市场价：</span><div class="overx_goods_info">{{$t('btn.money')}}{{data.goods_info.goods_market_price||'0.00'}}</div></div>
                     </template>
-                
+
                     <!-- <div class="goods_info_active"><span>优惠：</span><font class="noy" v-if="goods_info.goods_freight<=0 && goods_info.freight_id<=0">包邮</font><font v-else-if="store_info.free_freight>0">满{{store_info.free_freight}}包邮</font><font class="noz" v-else>暂无优惠</font></div> -->
                     <div class="goods_info_sale_num">累计销量<em color="#ca151e">{{data.goods_info.goods_sale||0}}</em></div>
                     <div class="goods_info_phone_read">手机查看<i style="font-size:16px" class="fa fa-qrcode"></i></div>
@@ -57,7 +57,7 @@
                         </ul>
                     </div>
                     <!-- 优惠券 E -->
-                    
+
                 </div>
                 <!-- 参加活动 -->
                 <div class="goods_info_active">
@@ -82,7 +82,7 @@
                         </el-carousel>
                     </div>
                 </div>
-                
+
                 <!-- 满减 S -->
                 <div class="goods_info_full_reduction" v-if="data.full_reductions.length>0">
                     <span class="title">活动：</span>
@@ -98,7 +98,7 @@
                         </ul>
                     </div>
                 </div>
-                
+
                 <div class="goods_info_num">
                     <div class="goods_info_num_title">购买数量：</div>
                     <div class="goods_info_num_jian" @click="change_buy_num(false)">-</div>
@@ -116,129 +116,129 @@
                         <div class="goods_info_buy" @click="buy()"><img :src="require('@/assets/Home/buy.png').default" /> 立即购买</div>
                         <div class="goods_info_add_cart" @click="add_cart()"><img :src="require('@/assets/Home/cart.png').default" />加入购物车</div>
                     </template>
-                    
+
                 </div>
 
             </div>
             <div class="clear"></div>
         </div>
-        <div class="goods_info_content w1200">
-            <div class="left_item">
-                <div class="store_info">
-                    <div class="store_title">
-                        <span class="tip">店铺</span>
-                        <span class="title">{{data.store_info['store_name']||'加载中...'}}</span>
-                    </div>
-                    <div class="rate">
-                        <span style="padding-top:2px;margin-right:10px">综合评分</span>
-                        <el-rate class="rate_class" v-model="data.rate_info.scoreAll"  :score-template="'{value} 分'" text-color="#F7BA2A" show-score disabled />
-                        <div class="clear"></div>
-                    </div>
-                    <div class="store_rate">
-                        <div class="title">店铺评分：</div>
-                        <div class="item">
-                            <span style="float:left;padding-top:2px;margin-right:10px;line-height:32px">描述相符</span>
-                            <el-rate class="rate_class other" v-model="data.rate_info.agreeAll"  :score-template="'{value} 分'" text-color="#F7BA2A" show-score disabled />
-                            <div class="clear"></div>
-                        </div>
-                        <div class="item">
-                            <span style="float:left;padding-top:2px;margin-right:10px;line-height:32px">服务态度</span>
-                            <el-rate class="rate_class other" v-model="data.rate_info.serviceAll"  :score-template="'{value} 分'" text-color="#F7BA2A" show-score disabled />
-                            <div class="clear"></div>
-                        </div>
-                        <div class="item">
-                            <span style="float:left;padding-top:2px;margin-right:10px;line-height:32px">发货速度</span>
-                            <el-rate class="rate_class other" v-model="data.rate_info.speedAll" :score-template="'{value} 分'" text-color="#F7BA2A" show-score  disabled />
-                            <div class="clear"></div>
-                        </div>
-                    </div>
-                    <div class="store_com" style="margin-top:10px">公司名称：<em style="color:#999">{{data.store_info.store_company_name}}</em></div>
-                    <div class="store_com" style="margin-bottom:10px">公司地址：<em style="color:#999">{{data.store_info.area_info+' '+data.store_info.store_address}}</em></div>
-                    <div class="btn">
-                        <span class="navstore" @click="$router.push('/store/'+data.store_info.id)">进入店铺</span>
-                        <span class="contact" @click="$refs['chat'].openChat()">联系客服</span>
-                        <div class="clear"></div>
-                    </div>
-                </div>
-                <!-- // 销售排行 -->
-                <div class="store_info">
-                    <div class="store_title"><span class="title">销售排行</span></div>
-                    <div class="goods_list" v-if="data.goods_info.sale_list && data.goods_info.sale_list.length>0">
-                        <dl v-for="(v,k) in data.goods_info.sale_list" :key="k"><a :href="'/goods/'+v.id">
-                            <dt><img :src="v.goods_master_image" :alt="v.goods_name"></dt>
-                            <dd class="info">
-                                <div class="title">{{v.goods_name||''}}</div>
-                                <div class="price">{{$t('btn.money')}}{{v.goods_price}}</div>
-                                <div class="round">{{k+1}}</div>
-                            </dd></a>
-                        </dl>
-                    </div>
-                    <div style="line-height:90px;text-align:center;color:#999;" v-else>暂时没有商品~~</div>
-                </div>
-            </div>
-            <div class="right_item">
-                 <el-tabs model-value="1" @tab-click="tabClick">
-                    <el-tab-pane name="1" label="商品详情" >
-                        <div v-html="editorHtml(data.goods_info.goods_content)||''"></div>
-                    </el-tab-pane>
-                    <el-tab-pane name="2" :label="'用户评价 ('+(data.comment_statistics.all||0)+')'" >
-                        <!-- 评论 -->
-                        <div class="comment_list_top">
-                            <div class="left_bfb">
-                                {{data.comment_statistics.rate||100}}<em style="font-size:20px">%</em>
-                                <span>好评率</span>
-                            </div>
-                            <div class="right_comment_list">
-                                <ul>
-                                    <li :class="data.params.is_type==0?'red':''" @click="comment_type_click(0)">全部 ({{data.comment_statistics.all||0}})</li>
-                                    <li :class="data.params.is_type==1?'red':''" @click="comment_type_click(1)">好评 ({{data.comment_statistics.good||0}})</li>
-                                    <li :class="data.params.is_type==2?'red':''" @click="comment_type_click(2)">中评 ({{data.comment_statistics.commonly||0}})</li>
-                                    <li :class="data.params.is_type==3?'red':''" @click="comment_type_click(3)">差评 ({{data.comment_statistics.bad||0}})</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="user_content_blcok_line"></div>
-                        <div class="comment_list_block">
-                            <ul>
-                                <li v-for="(v,k) in data.comments" :key="k">
-                                    <div class="comment_avatar"><el-image :src="v.avatar||require('@/assets/Home/user_default.png').default"></el-image></div>
-                                    <div class="comment_nickname">{{v.nickname}}</div>
-                                    <div class="comment_star"><em>评价得分：</em><div class="store_star_in"><el-rate disabled v-model="v.score" :score-template="'{value} 分'" text-color="#F7BA2A" show-score></el-rate></div></div>
-                                    <div class="comment_content">评价内容：<em style="color:#999">{{v.content||'good!~'}}</em></div>
-                                    <div class="comment_images" v-if="v.image.length>0">
-                                        <div class="comment_image" v-for="(vo,key) in v.image" :key="key"><el-image class="el_image" :initial-index="key" :preview-src-list="v.image" :fit="'cover'" :src="vo"  /></div>
-                                        <div class="clear"></div>
-                                    </div>
-                                    <div class="reply" v-if="v.reply!=''">
-                                        <div class="comment_avatar"><el-image :src="require('@/assets/Home/kefu.png').default"></el-image></div>
-                                        <div class="comment_nickname">售后客服</div>
-                                        <div class="comment_content">回复内容：<em >{{v.reply||'good!~'}}</em></div>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="fy" v-if="data.comments.length>0" style="margin-top:20px">
-                            <div class="fy">
-                                <el-pagination background 
-                                layout="total, prev, pager, next" 
-                                :page-size="data.params.per_page" 
-                                @current-change="handleCurrentChange"
-                                :page-count="data.params.last_page"
-                                :current-page="data.params.current_page"
-                                :total="data.params.total">
-                                </el-pagination>
-                            </div>
-                        </div>
-                        <el-empty v-else />
-                        
-                    </el-tab-pane>
-                    <el-tab-pane name="3" label="售后服务" force-render>
-                        <div v-html="editorHtml(data.store_info.after_sale_service)"></div>
-                    </el-tab-pane>
-                </el-tabs>
-            </div>
-            <div class="clear"></div>
-        </div>
+<!--        <div class="goods_info_content ">-->
+<!--            <div class="left_item">-->
+<!--                <div class="store_info">-->
+<!--                    <div class="store_title">-->
+<!--                        <span class="tip">店铺</span>-->
+<!--                        <span class="title">{{data.store_info['store_name']||'加载中...'}}</span>-->
+<!--                    </div>-->
+<!--                    <div class="rate">-->
+<!--                        <span style="padding-top:2px;margin-right:10px">综合评分</span>-->
+<!--                        <el-rate class="rate_class" v-model="data.rate_info.scoreAll"  :score-template="'{value} 分'" text-color="#F7BA2A" show-score disabled />-->
+<!--                        <div class="clear"></div>-->
+<!--                    </div>-->
+<!--                    <div class="store_rate">-->
+<!--                        <div class="title">店铺评分：</div>-->
+<!--                        <div class="item">-->
+<!--                            <span style="float:left;padding-top:2px;margin-right:10px;line-height:32px">描述相符</span>-->
+<!--                            <el-rate class="rate_class other" v-model="data.rate_info.agreeAll"  :score-template="'{value} 分'" text-color="#F7BA2A" show-score disabled />-->
+<!--                            <div class="clear"></div>-->
+<!--                        </div>-->
+<!--                        <div class="item">-->
+<!--                            <span style="float:left;padding-top:2px;margin-right:10px;line-height:32px">服务态度</span>-->
+<!--                            <el-rate class="rate_class other" v-model="data.rate_info.serviceAll"  :score-template="'{value} 分'" text-color="#F7BA2A" show-score disabled />-->
+<!--                            <div class="clear"></div>-->
+<!--                        </div>-->
+<!--                        <div class="item">-->
+<!--                            <span style="float:left;padding-top:2px;margin-right:10px;line-height:32px">发货速度</span>-->
+<!--                            <el-rate class="rate_class other" v-model="data.rate_info.speedAll" :score-template="'{value} 分'" text-color="#F7BA2A" show-score  disabled />-->
+<!--                            <div class="clear"></div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="store_com" style="margin-top:10px">公司名称：<em style="color:#999">{{data.store_info.store_company_name}}</em></div>-->
+<!--                    <div class="store_com" style="margin-bottom:10px">公司地址：<em style="color:#999">{{data.store_info.area_info+' '+data.store_info.store_address}}</em></div>-->
+<!--                    <div class="btn">-->
+<!--                        <span class="navstore" @click="$router.push('/store/'+data.store_info.id)">进入店铺</span>-->
+<!--                        <span class="contact" @click="$refs['chat'].openChat()">联系客服</span>-->
+<!--                        <div class="clear"></div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                &lt;!&ndash; // 销售排行 &ndash;&gt;-->
+<!--                <div class="store_info">-->
+<!--                    <div class="store_title"><span class="title">销售排行</span></div>-->
+<!--                    <div class="goods_list" v-if="data.goods_info.sale_list && data.goods_info.sale_list.length>0">-->
+<!--                        <dl v-for="(v,k) in data.goods_info.sale_list" :key="k"><a :href="'/goods/'+v.id">-->
+<!--                            <dt><img :src="v.goods_master_image" :alt="v.goods_name"></dt>-->
+<!--                            <dd class="info">-->
+<!--                                <div class="title">{{v.goods_name||''}}</div>-->
+<!--                                <div class="price">{{$t('btn.money')}}{{v.goods_price}}</div>-->
+<!--                                <div class="round">{{k+1}}</div>-->
+<!--                            </dd></a>-->
+<!--                        </dl>-->
+<!--                    </div>-->
+<!--                    <div style="line-height:90px;text-align:center;color:#999;" v-else>暂时没有商品~~</div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="right_item">-->
+<!--                 <el-tabs model-value="1" @tab-click="tabClick">-->
+<!--                    <el-tab-pane name="1" label="商品详情" >-->
+<!--                        <div v-html="editorHtml(data.goods_info.goods_content)||''"></div>-->
+<!--                    </el-tab-pane>-->
+<!--                    <el-tab-pane name="2" :label="'用户评价 ('+(data.comment_statistics.all||0)+')'" >-->
+<!--                        &lt;!&ndash; 评论 &ndash;&gt;-->
+<!--                        <div class="comment_list_top">-->
+<!--                            <div class="left_bfb">-->
+<!--                                {{data.comment_statistics.rate||100}}<em style="font-size:20px">%</em>-->
+<!--                                <span>好评率</span>-->
+<!--                            </div>-->
+<!--                            <div class="right_comment_list">-->
+<!--                                <ul>-->
+<!--                                    <li :class="data.params.is_type==0?'red':''" @click="comment_type_click(0)">全部 ({{data.comment_statistics.all||0}})</li>-->
+<!--                                    <li :class="data.params.is_type==1?'red':''" @click="comment_type_click(1)">好评 ({{data.comment_statistics.good||0}})</li>-->
+<!--                                    <li :class="data.params.is_type==2?'red':''" @click="comment_type_click(2)">中评 ({{data.comment_statistics.commonly||0}})</li>-->
+<!--                                    <li :class="data.params.is_type==3?'red':''" @click="comment_type_click(3)">差评 ({{data.comment_statistics.bad||0}})</li>-->
+<!--                                </ul>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <div class="user_content_blcok_line"></div>-->
+<!--                        <div class="comment_list_block">-->
+<!--                            <ul>-->
+<!--                                <li v-for="(v,k) in data.comments" :key="k">-->
+<!--                                    <div class="comment_avatar"><el-image :src="v.avatar||require('@/assets/Home/user_default.png').default"></el-image></div>-->
+<!--                                    <div class="comment_nickname">{{v.nickname}}</div>-->
+<!--                                    <div class="comment_star"><em>评价得分：</em><div class="store_star_in"><el-rate disabled v-model="v.score" :score-template="'{value} 分'" text-color="#F7BA2A" show-score></el-rate></div></div>-->
+<!--                                    <div class="comment_content">评价内容：<em style="color:#999">{{v.content||'good!~'}}</em></div>-->
+<!--                                    <div class="comment_images" v-if="v.image.length>0">-->
+<!--                                        <div class="comment_image" v-for="(vo,key) in v.image" :key="key"><el-image class="el_image" :initial-index="key" :preview-src-list="v.image" :fit="'cover'" :src="vo"  /></div>-->
+<!--                                        <div class="clear"></div>-->
+<!--                                    </div>-->
+<!--                                    <div class="reply" v-if="v.reply!=''">-->
+<!--                                        <div class="comment_avatar"><el-image :src="require('@/assets/Home/kefu.png').default"></el-image></div>-->
+<!--                                        <div class="comment_nickname">售后客服</div>-->
+<!--                                        <div class="comment_content">回复内容：<em >{{v.reply||'good!~'}}</em></div>-->
+<!--                                    </div>-->
+<!--                                </li>-->
+<!--                            </ul>-->
+<!--                        </div>-->
+<!--                        <div class="fy" v-if="data.comments.length>0" style="margin-top:20px">-->
+<!--                            <div class="fy">-->
+<!--                                <el-pagination background-->
+<!--                                layout="total, prev, pager, next"-->
+<!--                                :page-size="data.params.per_page"-->
+<!--                                @current-change="handleCurrentChange"-->
+<!--                                :page-count="data.params.last_page"-->
+<!--                                :current-page="data.params.current_page"-->
+<!--                                :total="data.params.total">-->
+<!--                                </el-pagination>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <el-empty v-else />-->
+
+<!--                    </el-tab-pane>-->
+<!--                    <el-tab-pane name="3" label="售后服务" force-render>-->
+<!--                        <div v-html="editorHtml(data.store_info.after_sale_service)"></div>-->
+<!--                    </el-tab-pane>-->
+<!--                </el-tabs>-->
+<!--            </div>-->
+<!--            <div class="clear"></div>-->
+<!--        </div>-->
 
         <!-- 聊天 -->
         <chat ref="chat" :position="true" :params="data.chatParams" />
@@ -253,7 +253,7 @@ import {useRoute,useRouter} from 'vue-router'
 import { useStore } from 'vuex'
 import dayjs from "dayjs"
 import {ArrowLeftBold,ArrowRightBold,Star,Timer,UserFilled,SemiSelect,Plus} from '@element-plus/icons'
-import PicZoom from '@/components/home/vue-piczoom.vue' // 放大镜组件 
+import PicZoom from '@/components/home/vue-piczoom.vue' // 放大镜组件
 import {editorHandle,formatTime} from '@/plugins/config'
 export default {
     components: {PicZoom,ArrowLeftBold,ArrowRightBold,Star,Timer,UserFilled,SemiSelect,Plus,Chat}, // Chat
@@ -323,7 +323,7 @@ export default {
                 proxy.$message.error(res.msg)
                 router.go(-1);
             }
-               
+
         }
 
         // 图片翻页
@@ -374,7 +374,7 @@ export default {
         }
         // 购买
         const buy = ()=>{
-            if(data.goods_info.skuList && data.goods_info.skuList.length>0 && data.sku_id == 0) return proxy.$message.error(proxy.$t('home.goods.skuErr')); 
+            if(data.goods_info.skuList && data.goods_info.skuList.length>0 && data.sku_id == 0) return proxy.$message.error(proxy.$t('home.goods.skuErr'));
             let params = {
                 order:[
                     {
@@ -390,7 +390,7 @@ export default {
             // 恢复 collective_id
             data.collective_id = 0
 
-            let str = window.btoa(JSON.stringify(params)); 
+            let str = window.btoa(JSON.stringify(params));
             router.push("/order/before/"+str);
 
         }
@@ -462,9 +462,9 @@ export default {
                     }
                 });
             });
-            
+
             data.chose_spec = chose_spec;
-            
+
             // 如果选择数量和规格数量一致则表示选择完所有的规格属性
             if(data.chose_spec.length == data.goods_info.attrList.length){
                 get_spec_attr_data();
@@ -507,7 +507,7 @@ export default {
             if(!proxy.R.isEmpty(goods_json)){
                 goods_list = JSON.parse(goods_json);
             }
-            
+
             let have_his = false;
             if(goods_list.length>0){
                 goods_list.forEach(res=>{
@@ -520,7 +520,7 @@ export default {
                     }
                 })
             }
-            
+
             if(!have_his){
                 goods_list.push({id:goods_info.id,goods_name:goods_info.goods_name,goods_price:goods_info.goods_price,image:goods_info.goods_master_image});
             }
@@ -576,9 +576,9 @@ export default {
             change_buy_num,buy,add_cart,attr_click,
         }
     },
-   
-    
-  
+
+
+
     // beforeRouteUpdate (to, from, next) {
     //     console.log(to,from);
     //     if(from.params.id != to.params.id){
@@ -718,7 +718,7 @@ export default {
                         background: #ca151e;
                     }
                 }
-                
+
                 dt{
                     width: 80px;
                     height: 80px;
@@ -726,10 +726,10 @@ export default {
                     float: left;
                     img{
                        width: 80px;
-                        height: 80px; 
+                        height: 80px;
                     }
                 }
-                
+
             }
             .btn{
                 border-top: 1px solid #efefef;
@@ -799,9 +799,8 @@ export default {
 }
 .goods_info_top_right{
     float: left;
-    width: 770px;
     font-size: 14px;
-    
+
     .goods_info_num{
         padding: 10px;
         margin-top: 10px;
@@ -887,7 +886,7 @@ export default {
             margin-right: 6px;
         }
     }
-    
+
     .goods_info_title{
         position: relative;
         font-size: 18px;
@@ -951,7 +950,7 @@ export default {
             color:#666;
         }
     }
-    
+
     .goods_info_active{
         margin-top: 20px;
         span{
@@ -993,7 +992,7 @@ export default {
             cursor: pointer;
             background: #f0f9eb;
             border: 1px solid #e1f3d8;
-            
+
             span{
                 color:#67c23a;
             }
@@ -1021,7 +1020,7 @@ export default {
     .pic_zoom_list{
         ul li{
             float: left;
-            margin:10px 10px 10px 0; 
+            margin:10px 10px 10px 0;
             border:1px solid #efefef;
             img{
                 width: 60px;
@@ -1087,7 +1086,7 @@ export default {
 }
 .goods_info_spec{
     margin-top: 20px;
-    padding-left:10px; 
+    padding-left:10px;
     line-height: 20px;
     color:#666;
     position: relative;
@@ -1172,7 +1171,7 @@ export default {
 .tuan_list{
     margin-bottom: 10px;
     height: 32px;
-    
+
     .tuan_item{
         height: 30px;
         overflow: hidden;
@@ -1230,7 +1229,7 @@ export default {
         padding-top: 20px;
         border-bottom: 1px solid #efefef;
         padding-bottom: 30px;
-        
+
     }
     ul li:after{
         clear: both;
