@@ -50,7 +50,6 @@ class PaymentService extends BaseService
                 $logs = "notice \r" . date ( "Y-m-d H:i:s", time () ) . "\r\n" . $content;
                 file_put_contents ( $log_file, $logs, FILE_APPEND );
             }
-            echo 1;die;
         $this->setConfig($paymentName, $device, $config);
         $result = Pay::$paymentName($this->config)->callback(null, ['_config' => $config]);
 
