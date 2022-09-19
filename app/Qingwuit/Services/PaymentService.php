@@ -36,16 +36,30 @@ class PaymentService extends BaseService
     const clientSecret = 'EFhTRJP9KMU1tHt8l-qmvjnCsS9I9jVGiAJ_f7wBPHnM81JXs3HKfOVUbYkHYHdmlHxRCy3kedjit6na';//秘钥
     const accept_url = 'http://laravel-rbac.cc/Api/paypal/Callback';//返回地址
     const Currency = 'USD';//币种
+    public function get_JsonData(){
+
+        $json = file_get_contents('php://input');
+
+        if ($json) {
+
+            $json = str_replace("'", '', $json);
+
+            $json = json_decode($json,true);
+
+        }
+
+        return $json;
+
+    }
 
     // 第三方支付回调 paymentName [wechat | alipay]
     // $config 是多租户配置
     public function payment($paymentName = 'wechat', $device = 'web', $config = 'default')
     {
 
-            $content=file_get_contents("php://input");
+        $json=$this->get_JsonData();
+        Log::info($json['transactions']['description']);
 
-            $json = json_decode($content,true);
-            Log::info(var_dump($json));
             die;
         $this->setConfig($paymentName, $device, $config);
         $result = Pay::$paymentName($this->config)->callback(null, ['_config' => $config]);
