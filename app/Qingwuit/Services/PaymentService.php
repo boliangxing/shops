@@ -43,13 +43,16 @@ class PaymentService extends BaseService
     {
 
             $content=file_get_contents("php://input");
-
+            Log::info($content);
             // 这里可以写一个日志，看一下接收到的数据
             if (! empty ( $content )) {
                 $log_file = 'public/data_log/pay' . date ( 'Ymd', time () ) . '.txt';
                 $logs = "notice \r" . date ( "Y-m-d H:i:s", time () ) . "\r\n" . $content;
                 file_put_contents ( $log_file, $logs, FILE_APPEND );
             }
+
+        echo 1;die;
+
         $this->setConfig($paymentName, $device, $config);
         $result = Pay::$paymentName($this->config)->callback(null, ['_config' => $config]);
 
