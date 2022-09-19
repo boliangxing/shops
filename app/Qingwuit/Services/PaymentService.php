@@ -41,7 +41,6 @@ class PaymentService extends BaseService
     // $config 是多租户配置
     public function payment($paymentName = 'wechat', $device = 'web', $config = 'default')
     {
-        if($paymentName=='paypal'){
 
             $content=file_get_contents("php://input");
 
@@ -52,7 +51,6 @@ class PaymentService extends BaseService
                 file_put_contents ( $log_file, $logs, FILE_APPEND );
             }
             echo 1;die;
-        }
         $this->setConfig($paymentName, $device, $config);
         $result = Pay::$paymentName($this->config)->callback(null, ['_config' => $config]);
 
