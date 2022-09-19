@@ -59,7 +59,7 @@ class PaymentService extends BaseService
         Log::info($json['resource']['transactions'][0]['description']);
         try {
             DB::beginTransaction();
-            $out_trade_no =$json['resource']['transactions'][0]['description';
+            $out_trade_no =$json['resource']['transactions'][0]['description'];
             if (empty($out_trade_no)) throw new \Exception('not found out_trade_no');
             $orderPay = $this->getService('OrderPay', true)->where('pay_no', $out_trade_no)->first();
             $paySuccessData = $this->paypalcheck($orderPay, $out_trade_no);
