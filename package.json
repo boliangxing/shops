@@ -22,11 +22,7 @@
     },
     "dependencies": {
         "@element-plus/icons": "0.0.11",
-<<<<<<< HEAD
-        "@nutui/nutui": "^3.1.20",
-=======
         "@nutui/nutui": "^3.2.2",
->>>>>>> 426113393c51c4d7963c8337ef34b5db81f7bef1
         "dayjs": "^1.10.7",
         "laravel-mix-polyfill": "^3.0.1",
         "node-sass": "^7.0.0",
