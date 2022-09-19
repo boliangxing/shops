@@ -1,5 +1,5 @@
 <template>
-    <div class="store_list w1200">
+    <div class="store_list">
         <div class="breadcrumb">
             <el-breadcrumb separator="/">
                 <el-breadcrumb-item>Home</el-breadcrumb-item>
@@ -8,7 +8,7 @@
         </div>
 
         <!-- 搜索条件 S -->
-        <div class="goods_where w1200">
+        <div class="goods_where">
             <div class="item">
                 <div class="title">筛选排序：</div>
                 <div class="list">
@@ -17,15 +17,15 @@
                             <li @click="sortChange('')" :class="'red'"
                                 >默认
                                 <div class="sorts">
-                                    <el-icon :class="((R.isEmpty(data.base64Decode.sort_order) || data.base64Decode.sort_order=='asc') && (R.isEmpty(data.base64Decode.sort_type) || data.base64Decode.sort_type==''))?'caret red':'caret'"><CaretTop /></el-icon> 
-                                    <el-icon :class="((!R.isEmpty(data.base64Decode.sort_order) && data.base64Decode.sort_order=='desc') && (R.isEmpty(data.base64Decode.sort_type) || data.base64Decode.sort_type==''))?'caret red':'caret'"><CaretBottom /></el-icon> 
+                                    <el-icon :class="((R.isEmpty(data.base64Decode.sort_order) || data.base64Decode.sort_order=='asc') && (R.isEmpty(data.base64Decode.sort_type) || data.base64Decode.sort_type==''))?'caret red':'caret'"><CaretTop /></el-icon>
+                                    <el-icon :class="((!R.isEmpty(data.base64Decode.sort_order) && data.base64Decode.sort_order=='desc') && (R.isEmpty(data.base64Decode.sort_type) || data.base64Decode.sort_type==''))?'caret red':'caret'"><CaretBottom /></el-icon>
                                 </div>
                             </li>
                             <li @click="sortChange('distance')" :class="'red'">
                                 距离
                                 <div class="sorts">
-                                    <el-icon :class="((!R.isEmpty(data.base64Decode.sort_order) && data.base64Decode.sort_order=='asc') && (!R.isEmpty(data.base64Decode.sort_type) && data.base64Decode.sort_type=='distance'))?'caret red':'caret'"><CaretTop /></el-icon> 
-                                    <el-icon :class="((!R.isEmpty(data.base64Decode.sort_order) && data.base64Decode.sort_order=='desc') && (!R.isEmpty(data.base64Decode.sort_type) && data.base64Decode.sort_type=='distance'))?'caret red':'caret'"><CaretBottom /></el-icon> 
+                                    <el-icon :class="((!R.isEmpty(data.base64Decode.sort_order) && data.base64Decode.sort_order=='asc') && (!R.isEmpty(data.base64Decode.sort_type) && data.base64Decode.sort_type=='distance'))?'caret red':'caret'"><CaretTop /></el-icon>
+                                    <el-icon :class="((!R.isEmpty(data.base64Decode.sort_order) && data.base64Decode.sort_order=='desc') && (!R.isEmpty(data.base64Decode.sort_type) && data.base64Decode.sort_type=='distance'))?'caret red':'caret'"><CaretBottom /></el-icon>
                                 </div>
                             </li>
                         </ul>
@@ -35,7 +35,7 @@
         </div>
         <!-- 搜索条件 E -->
 
-        <div class="home_store_list w1200" v-if="data.list.length>0">
+        <div class="home_store_list" v-if="data.list.length>0">
             <ul>
                 <li v-for="(v,k) in data.list" :key="k">
                     <div class="left_block" @click="$router.push('/store/'+v.id)">
@@ -47,29 +47,25 @@
                         </div>
                         <div class="comment_rate"></div>
                     </div>
-                    <div class="center_block">
-                        好评率：100%
-                    </div>
+
                     <div class="right_block">
-                        <div class="jl">距离：<span style="color:#ca151e;font-size:16px">{{v.distance}}</span></div>
                         <div class="btn" @click="$router.push('/store/'+v.id)">进入店铺</div>
                     </div>
                 </li>
             </ul>
 
             <div class="fy">
-                <el-pagination background 
-                layout="total, prev, pager, next" 
-                :page-size="data.params.per_page" 
+                <el-pagination background
+                layout="total, prev, pager, next"
+                :page-size="data.params.per_page"
                 @current-change="handleCurrentChange"
                 :page-count="data.params.last_page"
                 :current-page="data.params.current_page"
-                :total="data.params.total">
+                :total="data.params.total" style="margin:0 auto">
                 </el-pagination>
             </div>
         </div>
 
-        <el-empty style="margin-top:40px" v-else />
     </div>
 </template>
 
@@ -83,7 +79,7 @@ export default {
         const data = reactive({
             list:[],
             params:{
-                per_page:30,// 每页大小
+                per_page:5,// 每页大小
                 total:0,
                 last_page:1,
                 page:1
@@ -115,7 +111,7 @@ export default {
                         data.base64Decode.sort_order= 'desc';
                     }
                 }
-                
+
                 data.base64Decode.sort_type= e;
                 data.base64Code = window.btoa(JSON.stringify(data.base64Decode))
             }
@@ -149,7 +145,7 @@ export default {
         onMounted( async ()=>{
             loadData()
         })
-  
+
         return {
             data,
             handleCurrentChange,
@@ -165,11 +161,8 @@ export default {
     ul li{padding:30px 0;border-bottom: 1px solid #efefef;;&:after{content:'';display: block;clear:both;}}
     ul li:hover .right_item .title{color:#ca151e}
     .center_block{line-height: 80px;float: left;width: 200px;text-align: center;}
-    .right_block{float: right;width: 200px;padding-top: 4px;.btn{padding: 5px 20px;color:#fff;background: #ca151e;display: inline-block;margin-top: 10px;cursor: pointer;}}
+    .right_block{width: 200px;padding-top: 4px;.btn{padding: 5px 20px;color:#fff;background: #ca151e;display: inline-block;margin-top: 10px;cursor: pointer;}}
     .left_block{
-        cursor: pointer;
-        float: left;
-        width: 500px;
         .el_image{width: 80px;height: 80px;border:1px solid #efefef;float: left;margin-right: 15px;}
         .right_item{
             width: 380px;

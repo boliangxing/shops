@@ -2,20 +2,27 @@
     <div class="user_default2">
         <div class="user_info_balance">
             <dl class="item1">
+                <router-link to="/user/info">
+
+                    <dt><i class="fa fa-credit-card" /></dt>
+                    <dd class="title">账户信息</dd></router-link>
+            </dl>
+
+            <dl class="item2">
                 <dt><i class="fa fa-credit-card" /></dt>
                 <dd class="title">账号余额</dd>
                 <dd class="money">{{data.user_info.money||'0.00'}} 元</dd>
             </dl>
-            <dl class="item2">
-                <dt><i class="fa fa-btc" /></dt>
-                <dd class="title">账号积分</dd>
-                <dd class="money">{{data.user_info.integral||'0.00'}} 积分</dd>
-            </dl>
             <dl class="item3">
-                <dt><i class="fa fa-credit-card" /></dt>
-                <dd class="title">冻结资金</dd>
-                <dd class="money">{{data.user_info.frozen_money||'0.00'}} 元</dd>
+                <dt><i class="fa fa-btc" /></dt>
+                <dd class="title" @click="logout()">注销账号</dd>
             </dl>
+<!--            <dl class="item3">-->
+<!--                <dt><i class="fa fa-credit-card" /></dt>-->
+<!--                <dd class="title">冻结资金</dd>-->
+<!--                <dd class="money">{{data.user_info.frozen_money||'0.00'}} 元</dd>-->
+<!--            </dl>-->
+
             <div class="clear"></div>
         </div>
 
@@ -24,34 +31,34 @@
             <ul>
                 <li>
                     <router-link :to="{name:'user_order',params:{status:1}}">
-                    <i class="fa fa-pencil-square-o" />
+
                     <span><el-badge :value="data.count[0]" :hidden="data.count[0]==0" :max="99">待支付</el-badge></span>
                     </router-link>
                 </li>
                 <li>
                     <router-link :to="{name:'user_order',params:{status:2}}">
-                    <i class="fa fa-clock-o" />
+
                     <span><el-badge :value="data.count[1]" :hidden="data.count[1]==0" :max="99">待发货</el-badge></span>
                     </router-link>
                 </li>
                 <li>
                     <router-link :to="{name:'user_order',params:{status:3}}">
-                    <i class="fa fa-briefcase" />
+
                     <span><el-badge :value="data.count[2]" :hidden="data.count[2]==0" :max="99">待收货</el-badge></span>
                     </router-link>
                 </li>
-                <li>
-                    <router-link :to="{name:'user_order',params:{status:4}}">
-                    <i class="fa fa-commenting-o" />
-                    <span><el-badge :value="data.count[3]" :hidden="data.count[3]==0" :max="99">待评论</el-badge></span>
-                    </router-link>
-                </li>
-                <li>
-                    <router-link :to="{name:'user_order',params:{status:5}}">
-                    <i class="fa fa-history" />
-                    <span><el-badge :value="data.count[4]" :hidden="data.count[4]==0" :max="99">售后处理</el-badge></span>
-                    </router-link>
-                </li>
+<!--                <li>-->
+<!--                    <router-link :to="{name:'user_order',params:{status:4}}">-->
+<!--                    <i class="fa fa-commenting-o" />-->
+<!--                    <span><el-badge :value="data.count[3]" :hidden="data.count[3]==0" :max="99">待评论</el-badge></span>-->
+<!--                    </router-link>-->
+<!--                </li>-->
+<!--                <li>-->
+<!--                    <router-link :to="{name:'user_order',params:{status:5}}">-->
+<!--                    <i class="fa fa-history" />-->
+<!--                    <span><el-badge :value="data.count[4]" :hidden="data.count[4]==0" :max="99">售后处理</el-badge></span>-->
+<!--                    </router-link>-->
+<!--                </li>-->
             </ul>
         </div>
 
@@ -139,7 +146,9 @@ export default {
                 data.fav = res.fav.data
             })
         }
-
+        const logout = ()=>{
+            store.commit('login/logout')
+        }
         onMounted( async ()=>{
             const token = localStorage.getItem('token')
             if(!proxy.R.isEmpty(token)) data.isLogin = true
@@ -153,11 +162,11 @@ export default {
         })
 
         return {
-            data,
+            data,logout
         }
     },
-   
-    
+
+
 };
 </script>
 <style lang="scss" scoped>
@@ -168,7 +177,7 @@ export default {
         display: block;
         content:'';
     }
-  
+
     dl{
         width: 200px;
         float: left;
@@ -221,7 +230,6 @@ export default {
             }
         }
         .order_list_title{
-            width: 280px;
             float: left;
             font-size: 12px;
             line-height: 20px;
@@ -304,7 +312,7 @@ export default {
             }
             float: left;
             text-align: center;
-            width: 180px;
+            width: 100px;
             i{
                 position: absolute;
                 font-size: 26px;
@@ -318,7 +326,7 @@ export default {
                     color:#ca151e;
                 }
             }
-        
+
         }
     }
 }
@@ -327,15 +335,14 @@ export default {
     dl{
         flex: 1;
         background: #fff;
-        width: 302px;
         display: block;
         padding: 20px;
         dt{
             color: #fff;
             font-size: 26px;
             float: left;
-            width: 60px;
-            height: 60px;
+            width: 50px;
+            height: 50px;
             border-radius: 50%;
             line-height: 56px;
             text-align: center;
@@ -353,7 +360,7 @@ export default {
             }
         }
     }
-    
+
 }
 .item1{
     margin-right: 20px;
@@ -366,6 +373,7 @@ export default {
 .item3{
     dt{background: #f56c6c;}
 }
+
 </style>
 <style lang="scss">
 .order_status_block{

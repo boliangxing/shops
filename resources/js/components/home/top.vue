@@ -1,38 +1,44 @@
 <template>
-    <div class="head">
-        <div class="head_in">
-            <div class="top_shop_left">
-                <ul>
-                    <li><router-link to="/">青梧官网</router-link></li>
-                    <li>|</li>
-                    <li><router-link to="/">商城官网</router-link></li>
-                    <li>|</li>
-                    <li><router-link to="/">联系方式</router-link></li>
-                    <li>|</li>
-                    <li><router-link to="/">关于我们</router-link></li>
-                    <li>|</li>
-                    <li><router-link style="color:#ca151e;display:flex;align-items: center;" to="/"><img width="16" style="margin-top:4px;margin-right:4px;" :src="require('@/assets/order/address_pos3.png').default" >{{' '+data.city+' '||' - '}}</router-link></li>
-                </ul>
-            </div>
-            <div class="top_shop_right">
-                <ul>
-                    <li v-show="!isLogin"><router-link to="/login">登录</router-link></li>
-                    <li v-show="!isLogin"><router-link to="/register">注册</router-link></li>
-                    <li v-show="isLogin">欢迎您，<router-link to="/" style="color:#ca151e">{{data.users.nickname||'-'}}</router-link></li>
-                    <li v-show="isLogin">|</li>
-                    <li v-show="isLogin"><router-link to="/user" >个人中心</router-link></li>
-                    <li v-show="isLogin">|</li>
-                    <li v-show="isLogin" @click="logout()">注销账号</li>
-                    <li>|</li>
-                    <li><router-link to="/store/join" style="color:#ca151e">商家入驻</router-link></li>
-                    <li>|</li>
-                    <li><router-link to="/">手机端</router-link></li>
-                    <li>|</li>
-                    <li><router-link to="/">APP下载</router-link></li>
-                </ul>
-            </div>
-        </div>
-    </div>
+    <nut-navbar @on-click-back="back" @on-click-title="title" title="hard crystals">
+        <template #left>
+        </template>
+        <template #right>
+        </template>
+    </nut-navbar>
+<!--    <div class="head">-->
+<!--        <div class="head_in">-->
+<!--            <div class="top_shop_left">-->
+<!--                <ul>-->
+<!--                    <li><router-link to="/">青梧官网</router-link></li>-->
+<!--                    <li>|</li>-->
+<!--                    <li><router-link to="/">商城官网</router-link></li>-->
+<!--                    <li>|</li>-->
+<!--                    <li><router-link to="/">联系方式</router-link></li>-->
+<!--                    <li>|</li>-->
+<!--                    <li><router-link to="/">关于我们</router-link></li>-->
+<!--                    <li>|</li>-->
+<!--                    <li><router-link style="color:#ca151e;display:flex;align-items: center;" to="/"><img width="16" style="margin-top:4px;margin-right:4px;" :src="require('@/assets/order/address_pos3.png').default" >{{' '+data.city+' '||' - '}}</router-link></li>-->
+<!--                </ul>-->
+<!--            </div>-->
+<!--            <div class="top_shop_right">-->
+<!--                <ul>-->
+<!--                    <li v-show="!isLogin"><router-link to="/login">登录</router-link></li>-->
+<!--                    <li v-show="!isLogin"><router-link to="/register">注册</router-link></li>-->
+<!--                    <li v-show="isLogin">欢迎您，<router-link to="/" style="color:#ca151e">{{data.users.nickname||'-'}}</router-link></li>-->
+<!--                    <li v-show="isLogin">|</li>-->
+<!--                    <li v-show="isLogin"><router-link to="/user" >个人中心</router-link></li>-->
+<!--                    <li v-show="isLogin">|</li>-->
+<!--                    <li v-show="isLogin" @click="logout()">注销账号</li>-->
+<!--                    <li>|</li>-->
+<!--                    <li><router-link to="/store/join" style="color:#ca151e">商家入驻</router-link></li>-->
+<!--                    <li>|</li>-->
+<!--                    <li><router-link to="/">手机端</router-link></li>-->
+<!--                    <li>|</li>-->
+<!--                    <li><router-link to="/">APP下载</router-link></li>-->
+<!--                </ul>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
 </template>
 
 <script>
@@ -53,7 +59,7 @@ export default {
 
         let localCity = localStorage.getItem('city')
         if(!proxy.R.isEmpty(localCity)) data.city = localCity
-        
+
         const logout = ()=>{
             store.commit('login/logout')
         }
@@ -92,8 +98,8 @@ export default {
             logout
         }
     },
-   
-    
+
+
 };
 </script>
 <style lang="scss" scoped>

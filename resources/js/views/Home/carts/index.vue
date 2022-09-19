@@ -1,8 +1,8 @@
 <template>
-    <div class="create_order_1 w1200">
+    <div class="create_order_1">
         <div class="step_bar">
             <div class="step">
-                <div class="item check"><el-icon><Shop /></el-icon>  我的购物车</div>
+                <div class="item check"><el-icon><Shop /></el-icon>购物车</div>
                 <div class="item"><el-icon><MessageBox /></el-icon>物流地址</div>
                 <div class="item"><el-icon><Money /></el-icon>选择支付</div>
                 <div class="item"><el-icon><CircleCheckFilled /></el-icon>支付成功</div>
@@ -45,7 +45,7 @@
                     </ul>
                 </div>
             </div>
-           
+
         </div>
 
 
@@ -61,7 +61,7 @@
         <div style="min-height:600px;padding-top:100px" v-else>
             <el-empty />
         </div>
-        
+
 
 
     </div>
@@ -226,7 +226,7 @@ export default {
             })
             if(params.order.length<=0) return proxy.$message.error(proxy.$t('home.goods.cartEmpty'))
             await store.dispatch('init/loadCart')
-            let str = window.btoa(JSON.stringify(params)); 
+            let str = window.btoa(JSON.stringify(params));
             router.push("/order/before/"+str);
         }
 

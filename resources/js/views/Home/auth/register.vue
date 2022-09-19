@@ -1,6 +1,6 @@
 <template>
     <div class="home_login" :style="'background: url('+ require('@/assets/Home/user_login__bgs.png').default +');'">
-        <div class="login_block w1200">
+        <div class="login_block">
             <div class="login_item">
                 <div class="login_title">
                     <ul>
@@ -53,7 +53,7 @@ export default {
 
         let inviterId = route.query.inviter_id||0
         let inviterIdSession = sessionStorage.getItem('inviterId')
-        if(inviterId == 0 && !proxy.R.isEmpty(inviterIdSession)) inviterId = inviterIdSession 
+        if(inviterId == 0 && !proxy.R.isEmpty(inviterIdSession)) inviterId = inviterIdSession
         sessionStorage.setItem('inviterId',inviterId)
 
         data.code_text = proxy.$t('sms.sendCode')
@@ -76,7 +76,7 @@ export default {
             loginData.routeUriIndex = store.state.load.routeUriIndex
             if(!loginData.code){
                 await store.commit('login/loginAfter',loginData)
-                router.push('/') 
+                router.push('/')
             }
         }
 
@@ -114,7 +114,7 @@ export default {
             color:#999;
         }
     }
-    
+
     .login_item{
         width: 400px;
         background: #fff;

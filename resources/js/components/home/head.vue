@@ -1,55 +1,45 @@
 <template>
+    <nut-searchbar v-model="data.keywords" style="float: left">
+        <template v-slot:rightout>
+            <nut-icon name="search" @click="search"></nut-icon>
+        </template>
+
+    </nut-searchbar>
+
     <div class="head">
         <!-- logo and search -->
-        <div class="center_top center1200" v-show="data.centerTop">
-            <div class="shop_logo float_left">
-                <router-link to="/"><img width="242px" height="74px" :title="data.common.index_name||''" :src="data.common.logo||require('@/assets/Home/logo.png').default" /></router-link>
-            </div>
-            <div class="shop_top_seach float_left">
-                <ul>
-                    <li><input class="search_input" v-model="data.keywords" type="text" placeholder="手机 笔记本电脑 衣服"></li>
-                    <li><button class="search_button" type="button" @click="search" > <el-icon><Search /></el-icon> </button></li>
-                    <li>
-                        <div class="index_my_car">
-                            <span >我的商城<i class="fa fa-home" /></span>
-                            <span><router-link to="/carts">我的购物车<el-icon><i class="fa fa-shopping-cart" /></el-icon></router-link><div class="shop_car_dot">{{data.cart||0}}</div></span>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-        </div>
 
         <!-- nav -->
-        <div class="shop_top_nav">
-            <div class="center1200">
-                <div class="shop_top_nav_left" @mouseover="classClick(true)" @mouseleave="classClick(false)">
-                    全部商品
-                    <transition name="el-zoom-in-top"><leftBar :changeColor="!data.changeColor" v-show="data.subnav?(data.subnav && data.subnavBool):(data.subnavBool && data.subnavBool2)"></leftBar></transition>
-                </div>
-                <div class="shop_top_nav_right">
-                    <ul>
-                        <li>
-                            <router-link to="/">首页</router-link>
-                        </li>
-                        <li>
-                            <router-link to="/stores">店铺街</router-link>
-                        </li>
-                        <li>
-                            <router-link to="/seckills">秒杀</router-link>
-                        </li>
-                        <li>
-                            <router-link to="/collectives/eyJrZXl3b3JkcyI6IiJ9">拼团</router-link>
-                        </li>
-                        <li>
-                            <router-link to="/integral">积分商城</router-link>
-                        </li>
-                        <li>
-                            <router-link to="/user/article/帮助中心">帮助中心</router-link>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
+<!--        <div class="shop_top_nav">-->
+<!--            <div class="center1200">-->
+<!--                <div class="shop_top_nav_left" @mouseover="classClick(true)" @mouseleave="classClick(false)">-->
+<!--                    全部商品-->
+<!--                    <transition name="el-zoom-in-top"><leftBar :changeColor="!data.changeColor" v-show="data.subnav?(data.subnav && data.subnavBool):(data.subnavBool && data.subnavBool2)"></leftBar></transition>-->
+<!--                </div>-->
+<!--                <div class="shop_top_nav_right">-->
+<!--                    <ul>-->
+<!--                        <li>-->
+<!--                            <router-link to="/">首页</router-link>-->
+<!--                        </li>-->
+<!--                        <li>-->
+<!--                            <router-link to="/stores">店铺街</router-link>-->
+<!--                        </li>-->
+<!--&lt;!&ndash;                        <li>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <router-link to="/seckills">秒杀</router-link>&ndash;&gt;-->
+<!--&lt;!&ndash;                        </li>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <li>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <router-link to="/collectives/eyJrZXl3b3JkcyI6IiJ9">拼团</router-link>&ndash;&gt;-->
+<!--&lt;!&ndash;                        </li>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <li>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <router-link to="/integral">积分商城</router-link>&ndash;&gt;-->
+<!--&lt;!&ndash;                        </li>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <li>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <router-link to="/user/article/帮助中心">帮助中心</router-link>&ndash;&gt;-->
+<!--&lt;!&ndash;                        </li>&ndash;&gt;-->
+<!--                    </ul>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
 
     </div>
 </template>
@@ -101,7 +91,7 @@ export default {
                 }else{
                     data.subnavBool=true
                 }
-                
+
             }, true);
         }
 
@@ -130,7 +120,7 @@ export default {
                 if(data.keywords == 'undefined') data.keywords = ''
             }
         })
-        
+
 
         return {
             data,
@@ -270,7 +260,7 @@ export default {
                 font-size: 14px;
             }
         }
-        
+
     }
 }
 

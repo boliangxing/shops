@@ -1,8 +1,8 @@
 <template>
     <div class="home_store_info">
         <banner :banner="data.store_info.store_slide||[{image:require('@/assets/Home/store_banner.png').default}]" :height="350" />
-        
-        <div class="store_info_block w1200">
+
+        <div class="store_info_block">
             <div class="left_item">
                 <div class="store_info">
                     <div class="store_title">
@@ -116,9 +116,9 @@
                     </ul>
                     <div class="clear"></div>
                     <div class="fy" style="margin-top:30px">
-                        <el-pagination background 
-                        layout="total, prev, pager, next" 
-                        :page-size="data.params.per_page" 
+                        <el-pagination background
+                        layout="total, prev, pager, next"
+                        :page-size="data.params.per_page"
                         @current-change="handleCurrentChange"
                         :page-count="data.params.last_page"
                         :current-page="data.params.current_page"
@@ -233,7 +233,7 @@ export default {
                         data.base64Decode.sort_order= 'desc';
                     }
                 }
-                
+
                 data.base64Decode.sort_type= e;
                 console.log(data.base64Decode.sort_type)
             }
@@ -268,7 +268,7 @@ export default {
             storeFav,sortChange,handleCurrentChange
         }
     },
- 
+
 
 };
 </script>
@@ -289,7 +289,7 @@ export default {
                 &:nth-child(4n){
                     margin-right: 0;
                 }
-                
+
                 float: left;
                 .product_act_in{
                     width: 220px;
@@ -342,7 +342,7 @@ export default {
                     }
                 }
             }
-            
+
             ul li:hover .product_act_in{
                 box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
                 margin-top:-3px;
@@ -399,18 +399,18 @@ export default {
                                     -webkit-transform: scale(0.80);   //关键
                                     &:first-child{
                                     top:16px;
-                                    right:-5px; 
+                                    right:-5px;
                                     }
                                     &:last-child{
                                     top:22px;
-                                    right:-5px; 
+                                    right:-5px;
                                     }
                                     &.red{
                                         color:#ca151e;
                                     }
                                 }
                             }
-                    
+
                         }
                     }
                 }
@@ -474,7 +474,7 @@ export default {
                         background: #ca151e;
                     }
                 }
-                
+
                 dt{
                     width: 80px;
                     height: 80px;
@@ -482,10 +482,10 @@ export default {
                     float: left;
                     img{
                        width: 80px;
-                        height: 80px; 
+                        height: 80px;
                     }
                 }
-                
+
             }
             .btn{
                 border-top: 1px solid #efefef;

@@ -1,5 +1,5 @@
 <template>
-    <div class="store_join w1200">
+    <div class="store_join">
         <div class="step_bar">
             <div class="step">
                 <div class="item success"><el-icon :size="16"><Reading /></el-icon>阅读协议</div>
@@ -76,7 +76,7 @@ export default {
                     {label:'紧急联系人',value:'emergency_contact'},
                     {label:'紧急联系人电话',value:'emergency_contact_phone'},
                 ],
-              
+
             },
             formData:{},
             // editForm:{},
@@ -89,9 +89,9 @@ export default {
             data.dialogParams.dictData.class_id = classData
             data.dialogParams.dictData.area = areaData
         })
-        
+
         const nextStep = ()=>{
-            
+
             proxy.$refs.editForm.validate((valid)=>{
                 // 验证失败直接断点
                 if (!valid) return false

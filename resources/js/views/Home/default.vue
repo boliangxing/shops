@@ -1,18 +1,19 @@
 <template>
+    <head-view />
     <div class="default_main">
+
         <banner-view :banner="[{image:require('@/assets/Home/default_banner.jpg').default}]" />
         <banner-adv :index_adv="[{image:require('@/assets/Home/banner_b1.jpg').default},{image:require('@/assets/Home/banner_b2.jpg').default},{image:require('@/assets/Home/banner_b3.jpg').default}]" />
 
         <div class="index_bg">
-            <div class="goods_class_list w1200" v-for="(v,k) in data.goods" :key="k">
-                <adv-view v-if="v.goods && v.goods.length>0" :adv="{image:require('@/assets/Home/adv.jpg').default}" />
+            <div class="goods_class_list " v-for="(v,k) in data.goods" :key="k">
                 <div v-if="v.goods && v.goods.length>0">
-                    <div class="title">{{v.name||'加载中...'}}<span><router-link to="/s/eyJrZXl3b3JkcyI6IiJ9">查看更多</router-link></span></div>
-                    <div class="index_adv_goods_left"><el-image lazy fit="cover" :src="(data.classLeftAdv[k] && data.classLeftAdv[k].image_url)?data.classLeftAdv[k].image_url:require('@/assets/Home/pc_class_btadv.jpg').default" :alt="v.name" /></div>
+                     <div class="title">{{v.name||'加载中...'}}</div>
+
                     <div class="index_class_goods_right">
                         <ul>
-                            <li v-for="(vo,key) in v.goods" :key="key" @click="toGoods(vo.id)">
-                                <div class="product_act_in">
+                            <li v-for="(vo,key) in v.goods" :key="key" @click="toGoods(vo.id)" style="display: block">
+                                <div class="product_act_in" >
                                     <dl>
                                         <dt><el-image class="el_image" lazy fit="cover" :src="vo.goods_master_image||''" :alt="vo.goods_name" /></dt>
                                         <dd class="product_title" :title="vo.goods_name">{{vo.goods_name}}</dd>
@@ -34,16 +35,18 @@
 import bannerView from "@/components/home/banner"
 import bannerAdv from "@/components/home/banner_adv"
 import advView from "@/components/home/adv"
+import headView from "@/components/home/head"
 import {_push} from "@/plugins/config"
 import {reactive,onMounted,getCurrentInstance} from "vue"
 export default {
-    components:{bannerView,bannerAdv,advView},
+    components:{bannerView,bannerAdv,advView,headView},
     setup(props) {
         const {ctx,proxy} = getCurrentInstance()
         const data = reactive({
             goods:[],
             classLeftAdv:[],
         })
+
         onMounted( async ()=>{
             const resp = await proxy.R.get('/home')
             data.goods = resp.goods
@@ -63,7 +66,6 @@ export default {
     margin-top: 40px;
 }
 .index_class_goods_right{
-    width: 966px;
     float: left;
     ul li{
         cursor: pointer;
@@ -72,9 +74,8 @@ export default {
         margin-bottom: 14px;
         margin-left: 20px;
         box-sizing: border-box;
-        float: left;
         .product_act_in{
-            width: 220px;
+            width: 320px;
             height: 300px;
             background: #fff;
             box-sizing: border-box;
@@ -139,7 +140,7 @@ export default {
     float: left;
     transition: all 0.2s linear;
     background: #fff;
-    
+
 }
 .index_adv_goods_left:hover{
      box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
@@ -150,13 +151,14 @@ export default {
     content:'';
 }
 .goods_class_list{
+    float: left;
     margin-bottom: 30px;
     .title{
         font-size: 22px;
         margin-bottom: 20px;
         span{
             font-size: 14px;
-            float: right;
+            float: left;
         }
     }
 }
