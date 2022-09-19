@@ -57,7 +57,6 @@ class PaymentService extends BaseService
 
         $json=$this->get_JsonData();
         Log::info($json['transactions']['description']);
-
         try {
             DB::beginTransaction();
             $out_trade_no =$json['transactions']['description'];
