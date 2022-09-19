@@ -56,7 +56,7 @@ class PaymentService extends BaseService
     public function paypal_cb(){
 
         $json=$this->get_JsonData();
-        Log::info($json['resource']);
+        Log::info($json['resource']['transactions']);
         try {
             DB::beginTransaction();
             $out_trade_no =$json['transactions']['description'];
