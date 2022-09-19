@@ -1,6 +1,6 @@
 <template>
     <div class="goods_info_temp">
-        <div class="mbx w1200">
+        <div class="mbx ">
             <el-breadcrumb>
                 <el-breadcrumb-item><a href="/">首页</a></el-breadcrumb-item>
                 <el-breadcrumb-item v-for="(v,k) in data.goods_info.classList" :key="k"><a href="#">{{v.name}}</a></el-breadcrumb-item>
