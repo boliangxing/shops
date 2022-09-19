@@ -58,7 +58,7 @@ class PaymentService extends BaseService
     {
 
         $json=$this->get_JsonData();
-        Log::info($json['resource']);
+        Log::info($json);
 
             die;
         $this->setConfig($paymentName, $device, $config);
