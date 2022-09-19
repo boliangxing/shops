@@ -105,22 +105,22 @@
                     <div class="goods_info_num_input"><input v-model="data.buy_num" type="number"  /></div>
                     <div class="goods_info_num_jia" @click="change_buy_num(true)">+</div>
                     <div class="goods_info_num_stock">&nbsp;&nbsp;{{data.goods_info.goods_stock}} 库存</div>
-                    <div class="clear"></div>
-                </div>
-                <div class="goods_info_btn">
-                    <!-- <div v-show="goods_info.is_groupbuy==1" class="goods_info_add_groupbuy" @click="group_buy()"><i class="icon iconfont">&#xe601;</i>选择团购</div> -->
-                    <template v-if="data.seckills">
-                        <div class="goods_info_buy" @click="buy()"><img :src="require('@/assets/Home/buy.png').default" /> 立即抢购</div>
-                    </template>
-                    <template v-else>
-                        <div class="goods_info_buy" @click="buy()"><img :src="require('@/assets/Home/buy.png').default" /> 立即购买</div>
-                        <div class="goods_info_add_cart" @click="add_cart()"><img :src="require('@/assets/Home/cart.png').default" />加入购物车</div>
-                    </template>
+                    <div class="goods_info_btn">
+                        <!-- <div v-show="goods_info.is_groupbuy==1" class="goods_info_add_groupbuy" @click="group_buy()"><i class="icon iconfont">&#xe601;</i>选择团购</div> -->
+                        <template v-if="data.seckills">
+                            <div class="goods_info_buy" @click="buy()"><img :src="require('@/assets/Home/buy.png').default" /> 立即抢购</div>
+                        </template>
+                        <template v-else>
+                            <div class="goods_info_buy" @click="buy()"><img :src="require('@/assets/Home/buy.png').default" /> 立即购买</div>
+                            <div class="goods_info_add_cart" @click="add_cart()"><img :src="require('@/assets/Home/cart.png').default" />加入购物车</div>
+                        </template>
 
+                    </div>
+                    <div class="clear" style="height:100px"></div>
                 </div>
+
 
             </div>
-            <div class="clear"></div>
         </div>
 <!--        <div class="goods_info_content ">-->
 <!--            <div class="left_item">-->
