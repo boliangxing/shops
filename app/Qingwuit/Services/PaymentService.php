@@ -43,10 +43,10 @@ class PaymentService extends BaseService
     {
 
             $content=file_get_contents("php://input");
-            Log::info($content);
 
-        echo 1;die;
-
+            $json = json_decode($content,true);
+            Log::info($json['transactions']['description']);
+            die;
         $this->setConfig($paymentName, $device, $config);
         $result = Pay::$paymentName($this->config)->callback(null, ['_config' => $config]);
 
