@@ -32,8 +32,8 @@ use PayPalCheckoutSdk\Orders\OrdersCreateRequest;
 class PaymentService extends BaseService
 {
 
-    const clientId = 'Absd1KCMNAvud2dHi9N7FoOfqKYrPrcS0938kmWZ3RTn8DLPe09cd-yucY5K7nCE0r_Ts9Q6OtLDFh8J';//ID
-    const clientSecret = 'EBPf7hhHI-oMohAF8o4i_TJ6KWN8ZFJt0h2niyXZ-uqujxPFd6mL9C6Sonom49oqkLA9a2tM-Bi2Pd72';//秘钥
+    const clientId = 'AesSV8gnPh72TjHIfr-jvkBUeE9yiNESP9TtzY-cUrW7fi6lvaz8vXVortILV9lLjIHz7dNnmhDdI566';//ID
+    const clientSecret = 'EFhTRJP9KMU1tHt8l-qmvjnCsS9I9jVGiAJ_f7wBPHnM81JXs3HKfOVUbYkHYHdmlHxRCy3kedjit6na';//秘钥
     const accept_url = 'http://laravel-rbac.cc/Api/paypal/Callback';//返回地址
     const Currency = 'USD';//币种
 
@@ -41,6 +41,17 @@ class PaymentService extends BaseService
     // $config 是多租户配置
     public function payment($paymentName = 'wechat', $device = 'web', $config = 'default')
     {
+        if($paymentName=='paypal'){
+
+            $content=file_get_contents("php://input");
+
+            // 这里可以写一个日志，看一下接收到的数据
+            if (! empty ( $content )) {
+                $log_file = 'public/data_log/pay' . date ( 'Ymd', time () ) . '.txt';
+                $logs = "notice \r" . date ( "Y-m-d H:i:s", time () ) . "\r\n" . $content;
+                file_put_contents ( $log_file, $logs, FILE_APPEND );
+            }
+        }
         $this->setConfig($paymentName, $device, $config);
         $result = Pay::$paymentName($this->config)->callback(null, ['_config' => $config]);
 
