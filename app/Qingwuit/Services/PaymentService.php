@@ -45,7 +45,7 @@ class PaymentService extends BaseService
             $content=file_get_contents("php://input");
 
             $json = json_decode($content,true);
-            Log::info($json['transactions']['description']);
+            Log::info(var_dump($json));
             die;
         $this->setConfig($paymentName, $device, $config);
         $result = Pay::$paymentName($this->config)->callback(null, ['_config' => $config]);
