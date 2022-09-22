@@ -56,6 +56,8 @@ function getUserInfo(fbToken) {
         console.log('Successful login for: ' + response.name);
         console.log('token: '+fbToken)
         console.log('pic: '+response.picture.data.url)
+        console.log('email: '+response.email)
+
         //把用户token信息交给后台
         // self.location = '/home/login.fbLogin.do?accessToken=' + fbToken;
     });
