@@ -64,6 +64,33 @@ export default {
             }
 
         }
+        const checkLoginState = async () => {
+            FB.getLoginStatus(function (response) {
+                statusChangeCallback(response);
+            });
+        }
+
+        function statusChangeCallback(response) {
+            if (response.status === 'connected') {  //登陆状态已连接
+                var fbToken = response.authResponse.accessToken;
+                getUserInfo(fbToken);
+            } else if (response.status === 'not_authorized') { //未经授权
+                console.log('facebook未经授权');
+            } else {
+                console.log('不是登陆到Facebook;不知道是否授权');
+            }
+        }
+
+        //获取用户信息
+        function getUserInfo() {
+            FB.api('/me', function (response) {
+                //response.id / response.name
+                console.log('Successful login for: ' + response.name);
+                console.log('token'+fbToken)
+                //把用户token信息交给后台
+                // self.location = '/home/login.fbLogin.do?accessToken=' + fbToken;
+            });
+        }
 
         const wechatLogin = () => {
             window.location.href = "/api/oauth/weixinweb"
@@ -80,19 +107,6 @@ export default {
                     xfbml: true,
                     version: 'v8.0'
                 });
-                function checkLoginState() {
-                    FB.getLoginStatus(function(response) {
-                        statusChangeCallback(response);
-                    });
-                }
-                // auto authenticate with the api if already logged in with facebook
-                // FB.getLoginStatus(({authResponse}) => {
-                //     if (authResponse) {
-                //         accountService.apiAuthenticate(authResponse.accessToken).then(resolve);
-                //     } else {
-                //         resolve();
-                //     }
-                // });
 
             };
 
@@ -107,6 +121,7 @@ export default {
                 js.src = "https://connect.facebook.net/en_US/sdk.js";
                 fjs.parentNode.insertBefore(js, fjs);
             }(document, 'script', 'facebook-jssdk'));
+
 
 
             let inviterId = route.query.inviter_id || 0
@@ -128,15 +143,11 @@ export default {
 
         return {
             data,
-            wechatLogin, login
+            wechatLogin, login,checkLoginState
         }
     },
 
-    methods: {
-
-
-
-    },
+    methods: {},
     // created: function() {
     //     var _this = this;
     //     // 判断token是否失效
