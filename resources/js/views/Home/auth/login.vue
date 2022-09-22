@@ -34,6 +34,7 @@
 <script>
 window.checkLoginState = function() {
     FB.getLoginStatus(function(response) {
+        console.log(response)
         statusChangeCallback(response);
     });
 }
