@@ -71,6 +71,7 @@ export default {
         // onMounted
         onMounted(() => {
 
+
             // wait for facebook sdk to initialize before starting the vue app
             window.fbAsyncInit = function () {
                 FB.init({
@@ -79,15 +80,20 @@ export default {
                     xfbml: true,
                     version: 'v8.0'
                 });
-
+                function checkLoginState() {
+                    FB.getLoginStatus(function(response) {
+                        statusChangeCallback(response);
+                    });
+                }
                 // auto authenticate with the api if already logged in with facebook
-                FB.getLoginStatus(({authResponse}) => {
-                    if (authResponse) {
-                        accountService.apiAuthenticate(authResponse.accessToken).then(resolve);
-                    } else {
-                        resolve();
-                    }
-                });
+                // FB.getLoginStatus(({authResponse}) => {
+                //     if (authResponse) {
+                //         accountService.apiAuthenticate(authResponse.accessToken).then(resolve);
+                //     } else {
+                //         resolve();
+                //     }
+                // });
+
             };
 
             // load facebook sdk script
@@ -128,11 +134,7 @@ export default {
 
     methods: {
 
-        checkLoginState() {
-            FB.getLoginStatus(function (response) {
-                statusChangeCallback(response);
-            });
-        }
+
 
     },
     // created: function() {
