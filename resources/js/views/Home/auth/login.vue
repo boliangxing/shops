@@ -51,11 +51,11 @@ function statusChangeCallback(response) {
 
 //获取用户信息
 function getUserInfo(fbToken) {
-    FB.api('/me?fields=first_name,last_name,gender,email,picture', function (response) {
+    FB.api('/me?fields=first_name,last_name,gender,email,picture,name', function (response) {
         //response.id / response.name
         console.log('Successful login for: ' + response.name);
         console.log('token: '+fbToken)
-        console.log(response)
+        console.log('pic: '+response.picture.data.url)
         //把用户token信息交给后台
         // self.location = '/home/login.fbLogin.do?accessToken=' + fbToken;
     });
