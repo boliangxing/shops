@@ -7,7 +7,6 @@
         </base-view>
     </div>
 </template>
-
 <script>
 import baseView from "@/components/home/base"
 export default {

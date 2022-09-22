@@ -16,6 +16,7 @@ let elementInit = { size: 'default', zIndex: 3000, locale: localeElementPlus.def
 import NutUI from "@nutui/nutui";
 // 采用按需加载时  此全局css样式，需要删除
 import "@nutui/nutui/dist/style.css";
+import FBSignInButton from 'vue-facebook-signin-button'
 router.afterEach(() => {
     window.scrollTo(0,0);
 });
@@ -26,6 +27,6 @@ app.component('q-input',qInput)
 app.use(i18n)
 .use(store)
 .use(router)
-.use(ElementPlus,elementInit).use(NutUI)
+.use(ElementPlus,elementInit).use(NutUI).use(FBSignInButton)
 app.config.globalProperties.R = R
 app.mount('#app')
