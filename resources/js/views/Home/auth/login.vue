@@ -34,7 +34,6 @@
 <script>
 window.checkLoginState = function() {
     FB.getLoginStatus(function(response) {
-        console.log(response)
         statusChangeCallback(response);
     });
 }
@@ -42,6 +41,8 @@ window.checkLoginState = function() {
 function statusChangeCallback(response) {
     if (response.status === 'connected') {  //登陆状态已连接
         var fbToken = response.authResponse.accessToken;
+        console.log(response.authResponse)
+        console.log(fbToken)
         getUserInfo(fbToken);
     } else if (response.status === 'not_authorized') { //未经授权
         console.log('facebook未经授权');
