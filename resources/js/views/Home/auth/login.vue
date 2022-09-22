@@ -41,8 +41,6 @@ window.checkLoginState = function() {
 function statusChangeCallback(response) {
     if (response.status === 'connected') {  //登陆状态已连接
         var fbToken = response.authResponse.accessToken;
-        console.log(response.authResponse)
-        console.log(fbToken)
         getUserInfo(fbToken);
     } else if (response.status === 'not_authorized') { //未经授权
         console.log('facebook未经授权');
@@ -52,11 +50,12 @@ function statusChangeCallback(response) {
 }
 
 //获取用户信息
-function getUserInfo() {
+function getUserInfo(fbToken) {
     FB.api('/me', function (response) {
         //response.id / response.name
         console.log('Successful login for: ' + response.name);
         console.log('token'+fbToken)
+        console.log(response)
         //把用户token信息交给后台
         // self.location = '/home/login.fbLogin.do?accessToken=' + fbToken;
     });
