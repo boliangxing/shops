@@ -1,5 +1,5 @@
 <template>
-    <div class="goods_info_temp" style="left: 15px">
+    <div class="goods_info_temp" style="margin-left: 15px">
         <div class="goods_info_top ">
             <div class="goods_info_top_left" >
                 <div class="goods_image_item">

@@ -394,8 +394,8 @@ export default {
 }
 .home .s_goods_list .item{
     float: left;
-    width: 150px;
-    height: 150px;
+    width: 224px;
+    height: 364px;
     box-sizing: border-box;
     margin: 0 20px 20px 0;
     &:nth-child(5n){
@@ -405,8 +405,8 @@ export default {
 .home .s_goods_list .item dl{
     border: 1px solid #efefef;
     box-sizing: border-box;
-    width: 130px;
-    height: 130px;
+    width: 170px;
+    height: 364px;
     transition: all 0.2s linear;
 }
 .home .s_goods_list .item dl dt{

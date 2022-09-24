@@ -1,5 +1,5 @@
 <template>
-    <div class="create_order_1 " style="left: 15px">
+    <div class="create_order_1 " style="margin-left: 15px">
 
 
         <!-- 地址信息选择 S -->
