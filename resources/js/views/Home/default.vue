@@ -394,7 +394,7 @@ export default {
 }
 .home .s_goods_list .item{
     float: left;
-    width: 224px;
+    width: 170px;
     height: 364px;
     box-sizing: border-box;
     margin: 0 20px 20px 0;
