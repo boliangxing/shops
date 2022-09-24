@@ -1,5 +1,5 @@
 <template>
-    <div class="goods_info_temp">
+    <div class="goods_info_temp" style="left: 15px">
         <div class="goods_info_top ">
             <div class="goods_info_top_left" >
                 <div class="goods_image_item">
@@ -998,7 +998,6 @@ export default {
     }
 }
 .goods_info_top_left{
-    width: 402px;
     border: 1px solid #efefef;
     margin-right: 28px;
     float: left;

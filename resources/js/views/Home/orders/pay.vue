@@ -1,5 +1,5 @@
 <template>
-    <div class="create_order_1 ">
+    <div class="create_order_1 " style="left: 15px">
 
 
         <!-- 当前用户余额 S -->
@@ -28,16 +28,7 @@
         <div class="block">
             <div class="title">订单商品信息</div>
             <div class="goods_list">
-                <div class="goods_th">
-                    <el-row>
-                        <el-col :span="10">商品信息</el-col>
-                        <el-col :span="4">属性信息</el-col>
-                        <el-col :span="4">单价</el-col>
-                        <el-col :span="2">数量</el-col>
-                        <el-col :span="2">优惠</el-col>
-                        <el-col :span="2">小计</el-col>
-                    </el-row>
-                </div>
+
 
                 <div class="store_list" v-for="(v,k) in data.order" :key="k">
                     <div class="store_title">
@@ -59,7 +50,6 @@
                                                 <dd :title="vo.goods_name">{{vo.goods_name}}</dd>
                                             </dl>
                                         </el-col>
-                                        <el-col :span="4"><div class="goods_info_th">{{vo.sku_name}}</div></el-col>
                                         <el-col :span="4"><div class="goods_info_th">{{vo.goods_price}}</div></el-col>
                                         <el-col :span="2"><div class="goods_info_th">{{vo.buy_num}}</div></el-col>
                                         <el-col :span="2"><div class="goods_info_th">-</div></el-col>
