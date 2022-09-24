@@ -8,10 +8,17 @@
                     </ul>
                 </div>
                 <div class="login_input">
-                    <div class="input_block"><input type="text" v-model="data.username" placeholder="手机"
-                                                    @keyup.enter="login"></div>
-                    <div class="input_block"><input type="password" v-model="data.password" placeholder="密码"
-                                                    @keyup.enter="login"></div>
+                    <div class="input_block">
+                        <maz-phone-number-input v-model="data.username" @keyup.enter="login"></maz-phone-number-input>
+                    </div>
+                    <div class="input_block">
+                        <MazInput v-model="data.password" label="password" type="password" @keyup.enter="login"/>
+                    </div>
+
+                    <!--                    <div class="input_block"><input type="text" v-model="data.username" placeholder="手机"-->
+                    <!--                                                    @keyup.enter="login"   ></div>-->
+                    <!--                    <div class="input_block"><input type="password" v-model="data.password" placeholder="密码"-->
+                    <!--                                                    @keyup.enter="login"></div>-->
                 </div>
 
                 <div class="login_btn" @click="login">登 录</div>
@@ -32,8 +39,8 @@
 </template>
 
 <script>
-window.checkLoginState = function() {
-    FB.getLoginStatus(function(response) {
+window.checkLoginState = function () {
+    FB.getLoginStatus(function (response) {
         statusChangeCallback(response);
     });
 }
@@ -54,19 +61,28 @@ function getUserInfo(fbToken) {
     FB.api('/me?fields=first_name,last_name,gender,email,picture,name', function (response) {
         //response.id / response.name
         console.log('Successful login for: ' + response.name);
-        console.log('token: '+fbToken)
-        console.log('pic: '+response.picture.data.url)
-        console.log('email: '+response.email)
+        console.log('token: ' + fbToken)
+        console.log('pic: ' + response.picture.data.url)
+        console.log('email: ' + response.email)
 
         //把用户token信息交给后台
         // self.location = '/home/login.fbLogin.do?accessToken=' + fbToken;
     });
 }
+
 import {reactive, onMounted, getCurrentInstance} from "vue"
 import {useStore} from 'vuex'
 import {useRouter, useRoute} from 'vue-router'
+/*****main.js****/
+import MazPhoneNumberInput from 'maz-ui/components/MazPhoneNumberInput'
+// import css
+import 'maz-ui/css/main.css'
+import MazInput from 'maz-ui/components/MazInput'
 
 export default {
+    components: {
+        MazPhoneNumberInput, MazInput
+    },
     setup(props) {
 
         const {proxy} = getCurrentInstance()
@@ -74,6 +90,7 @@ export default {
         const router = useRouter()
         const route = useRoute()
         const data = reactive({
+            phonenumber: "",
             username: "",
             password: "",
             provider: "users"
@@ -85,6 +102,7 @@ export default {
                 return;
             }
 
+            data.username = data.phonenumber + data.username;
             let loginData = await proxy.R.post('/login', data)
             loginData.routeUriIndex = store.state.load.routeUriIndex
             loginData.path = '/login'
@@ -127,7 +145,6 @@ export default {
             }(document, 'script', 'facebook-jssdk'));
 
 
-
             let inviterId = route.query.inviter_id || 0
             let inviterIdSession = sessionStorage.getItem('inviterId')
             if (inviterId == 0 && !proxy.R.isEmpty(inviterIdSession)) inviterId = inviterIdSession
@@ -147,11 +164,12 @@ export default {
 
         return {
             data,
-            wechatLogin, login,checkLoginState
+            wechatLogin, login, checkLoginState
         }
     },
 
     methods: {},
+
     // created: function() {
     //     var _this = this;
     //     // 判断token是否失效

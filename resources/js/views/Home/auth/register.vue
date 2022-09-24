@@ -10,11 +10,18 @@
                     </ul>
                 </div>
                 <div class="login_input">
-                    <div class="input_block"><input type="text" v-model="data.username" placeholder="手机" @keyup.enter="register"></div>
-                    <div class="input_block"><input type="password" v-model="data.password" placeholder="密码" @keyup.enter="register"></div>
-                    <div class="input_block"><input type="password" v-model="data.re_password" placeholder="确认密码" @keyup.enter="register"></div>
                     <div class="input_block">
-                        <input class="yzm" type="code" v-model="data.code" :placeholder="$t('btn.code')" @keyup.enter="register">
+                        <maz-phone-number-input v-model="data.username" @keyup.enter="login"></maz-phone-number-input>
+                    </div>
+                    <div class="input_block">
+                        <MazInput v-model="data.password" label="password" type="password" @keyup.enter="login"/>
+                    </div>
+                    <div class="input_block">
+                        <MazInput v-model="data.re_password" label="re_password" type="password" @keyup.enter="login"/>
+                    </div>
+                    <div class="input_block">
+
+                        <MazInput class="yzm" type="code" v-model="data.code" :placeholder="$t('btn.code')" @keyup.enter="register"></MazInput>
                         <span :class="data.math>0?'yzmbtn dis':'yzmbtn'" @click="sendSms">{{data.code_text}}</span>
                     </div>
                 </div>
@@ -35,7 +42,14 @@
 import {reactive,getCurrentInstance} from "vue"
 import { useStore } from 'vuex'
 import { useRouter,useRoute } from 'vue-router'
+import MazPhoneNumberInput from 'maz-ui/components/MazPhoneNumberInput'
+// import css
+import 'maz-ui/css/main.css'
+import MazInput from 'maz-ui/components/MazInput'
 export default {
+    components: {
+        MazPhoneNumberInput, MazInput
+    },
     setup(props) {
         const {ctx,proxy} = getCurrentInstance()
         const store = useStore()

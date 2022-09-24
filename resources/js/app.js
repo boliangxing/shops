@@ -17,6 +17,7 @@ import NutUI from "@nutui/nutui";
 // 采用按需加载时  此全局css样式，需要删除
 import "@nutui/nutui/dist/style.css";
 import FBSignInButton from 'vue-facebook-signin-button'
+
 router.afterEach(() => {
     window.scrollTo(0,0);
 });

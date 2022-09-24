@@ -17,7 +17,9 @@ class SmsService extends BaseService
 
             // 默认可用的发送网关
             'gateways' => [
-                'aliyun',
+                'aliyun','qcloud','yunpian',
+
+
             ],
         ],
         // 可用的网关配置
@@ -29,6 +31,19 @@ class SmsService extends BaseService
                 'access_key_id' => '',
                 'access_key_secret' => '',
                 'sign_name' => '',
+            ],
+            'yunpian' => [
+
+                'api_key' => '',
+
+            ],
+
+            'qcloud' => [
+
+                'sdk_app_id' => '', // 要在.env文件配置好相应的值
+
+                'app_key' => '', // 要在.env文件配置好相应的值
+
             ],
             //...
         ],
@@ -46,11 +61,10 @@ class SmsService extends BaseService
      */
     public function sendSms($phone, $name)
     {
-
         // 检测手机号码
-        if (!$this->check_phone($phone)) {
-            return $this->formatError(__('tip.sms.phoneError'));
-        }
+//        if (!$this->check_phone($phone)) {
+//            return $this->formatError(__('tip.sms.phoneError'));
+//        }
 
         $configService = $this->getService('Configs');
         $alisms = $configService->getFormatConfig('sms'); // 获取下签名密钥

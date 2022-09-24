@@ -96,6 +96,48 @@ class AuthService extends BaseService
 
         return $this->formatError($resp->json()['message'], $respData);
     }
+    // 注册服务
+    public function facebook_auth()
+    {
+        $username = request('name');
+        $password = time();
+        $type = request('type') ?? 'username'; // 注册方式 phone email
+
+        $provider = 'users'; // 用户类型 users | admins
+        $modelName = ucwords(rtrim($provider, 's'));
+
+        if ($provider == 'admins') {
+            return;
+        }
+
+        $model = app()->make('App\Qingwuit\Models\\' . $modelName);
+
+        // 判断是否存在相同得账号和电话
+        if ($model->where($type, $username)->exists()) {
+            // 该账号已经存在
+            return $this->formatError(__('tip.userExist'));
+        }
+
+        $regData = [
+            'nickname'  =>  $username,
+            'username'  =>  $username,
+            'phone'     =>  $type == 'phone' ? $username : '',
+            'email'     =>  $type == 'email' ? $username : '',
+            'password'  =>  Hash::make($password),
+            'pay_password'  =>  Hash::make('123456'),
+            'belong_id' =>  0,
+        ];
+
+        if (!empty(request('inviter_id'))) {
+            $regData['inviter_id'] = request('inviter_id');
+        }
+
+        if (!$model->create($regData)) {
+            return; // 账号建立失败
+        }
+
+        return $this->login(false, ['username' => $username, 'password' => $password, 'provider' => $provider]);
+    }
 
 
     // 注册服务
