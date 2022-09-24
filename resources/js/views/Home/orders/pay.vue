@@ -1,13 +1,6 @@
 <template>
-    <div class="create_order_1 w1200">
-        <div class="step_bar">
-            <div class="step">
-                <div class="item check"><el-icon><Shop /></el-icon>  我的购物车</div>
-                <div class="item check"><el-icon><MessageBox /></el-icon>物流地址</div>
-                <div class="item check"><el-icon><Money /></el-icon>选择支付</div>
-                <div class="item"><el-icon><CircleCheckFilled /></el-icon>支付成功</div>
-            </div>
-        </div>
+    <div class="create_order_1 ">
+
 
         <!-- 当前用户余额 S -->
         <div class="block">

@@ -39,7 +39,7 @@
         </div>
 
 
-        <div class="cart_th" v-if="data.params.total>0">
+        <div class="cart_th" v-if="data.params.total>0" style="display: block">
             <el-checkbox :indeterminate="data.indeterminate" :model-value="data.checkAll" @change="onCheckAllChange">全选</el-checkbox>
             <span class="goods"></span>
             <span class="attr"></span>
@@ -48,9 +48,7 @@
             <span class="handle" style="width:140px;text-align:right;"><div class="error_btn" style="padding:5px 30px;" @click="buy">结算</div></span>
         </div>
 
-        <div style="min-height:600px;padding-top:100px" v-else>
-            <el-empty />
-        </div>
+
 
 
 

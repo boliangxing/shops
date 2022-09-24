@@ -1,13 +1,5 @@
 <template>
     <div class="goods_info_temp">
-        <div class="mbx ">
-            <el-breadcrumb>
-                <el-breadcrumb-item><a href="/">首页</a></el-breadcrumb-item>
-                <el-breadcrumb-item v-for="(v,k) in data.goods_info.classList" :key="k"><a href="#">{{v.name}}</a></el-breadcrumb-item>
-                <el-breadcrumb-item>{{data.goods_info.goods_name}}</el-breadcrumb-item>
-            </el-breadcrumb>
-        </div>
-
         <div class="goods_info_top ">
             <div class="goods_info_top_left" >
                 <div class="goods_image_item">
@@ -116,7 +108,7 @@
                         </template>
 
                     </div>
-                    <div class="clear" style="height:100px"></div>
+                    <div   style="height:100px"></div>
                 </div>
 
 
