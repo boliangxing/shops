@@ -266,7 +266,8 @@ export default {
         bottom: 20px;
         border:1px solid #efefef;
         padding-left: 20px;
-        height: 60px;
+        width: 320px;
+        height: 180px;
         border-bottom: none;
         box-sizing: border-box;
         padding-top: 10px;
