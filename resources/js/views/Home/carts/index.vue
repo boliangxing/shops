@@ -39,7 +39,7 @@
         </div>
 
 
-        <div class="cart_th" v-if="data.params.total>0" style="display: block">
+        <div class="cart_th" v-if="data.params.total>0" >
             <el-checkbox :indeterminate="data.indeterminate" :model-value="data.checkAll" @change="onCheckAllChange">全选</el-checkbox>
             <span class="goods"></span>
             <span class="attr"></span>
@@ -381,7 +381,7 @@ export default {
     background: #f5f5f5;
     padding:10px 20px;
     box-sizing: border-box;
-    display: flex;
+    float: left;
     .goods{
         flex: 0 0 30px;
         padding-left: 60px;
