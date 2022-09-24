@@ -1003,8 +1003,7 @@ export default {
     float: left;
     box-sizing: border-box;
     .goods_image_item{
-        width: 400px;
-        height: 400px;
+
         display: block;
         border-bottom: 1px solid #efefef;
     }
