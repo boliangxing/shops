@@ -264,7 +264,6 @@ export default {
                 }
                 dd{
                     float: left;
-                    width: 400px;
                     height: 40px;
                     text-overflow: hidden;
                     line-height: 20px;
