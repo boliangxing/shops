@@ -462,8 +462,8 @@ export default {
     background: #ca151e;
 }
 .home .s_goods_list .item .el_image{
-    width: 176px;
-    height: 176px;
+    width: 130px;
+    height: 130px;
 }
 .breadcrumb{
     margin-top:30px;
