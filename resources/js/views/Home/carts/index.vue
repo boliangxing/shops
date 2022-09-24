@@ -1,25 +1,15 @@
 <template>
     <div class="create_order_1">
-        <div class="step_bar">
-            <div class="step">
-                <div class="item check"><el-icon><Shop /></el-icon>购物车</div>
-                <div class="item"><el-icon><MessageBox /></el-icon>物流地址</div>
-                <div class="item"><el-icon><Money /></el-icon>选择支付</div>
-                <div class="item"><el-icon><CircleCheckFilled /></el-icon>支付成功</div>
-            </div>
-        </div>
 
-
-
-        <div class="cart_th" v-if="data.params.total>0">
-            <el-checkbox :indeterminate="data.indeterminate" :model-value="data.checkAll" @change="onCheckAllChange">全选</el-checkbox>
-            <span class="goods">商品</span>
-            <span class="attr">规格</span>
-            <span class="price">单价（元）</span>
-            <span class="num">数量</span>
-            <span class="total">小计</span>
-            <span class="handle">操作</span>
-        </div>
+<!--        <div class="cart_th" v-if="data.params.total>0">-->
+<!--            <el-checkbox :indeterminate="data.indeterminate" :model-value="data.checkAll" @change="onCheckAllChange">全选</el-checkbox>-->
+<!--            <span class="goods">商品</span>-->
+<!--            <span class="attr">规格</span>-->
+<!--            <span class="price">单价（元）</span>-->
+<!--            <span class="num">数量</span>-->
+<!--            <span class="total">小计</span>-->
+<!--            <span class="handle">操作</span>-->
+<!--        </div>-->
 
         <div class="cart_table" v-if="data.params.total>0">
             <div class="store_list" v-for="(v,k) in data.list" :key="k">
@@ -259,7 +249,6 @@ export default {
             }
         }
         dd{
-            width: 350px;
             float: left;
             &.goods_title{
                 text-overflow: -o-ellipsis-lastline;
@@ -396,7 +385,7 @@ export default {
     box-sizing: border-box;
     display: flex;
     .goods{
-        flex: 0 0 420px;
+        flex: 0 0 30px;
         padding-left: 60px;
         white-space: nowrap;
         text-overflow: ellipsis;
@@ -404,27 +393,27 @@ export default {
         word-break: break-all;
     }
     .price{
-        flex: 0 0 110px;
+        flex: 0 0 30px;
     }
     .attr{
-        flex: 0 0 120px;
+        flex: 0 0 30px;
     }
     .num{
-        flex: 0 0 150px;
+        flex: 0 0 30px;
         padding-left: 20px;
     }
     .total{
-        flex: 0 0 70px;
+        flex: 0 0 30px;
         &.btcss{
             text-align: right;
-            flex: 0 0 280px;
+            flex: 0 0 30px;
         }
     }
     .handle{
         text-align: center;
     }
     span{
-        flex: 0 0 120px;
+        flex: 0 0 30px;
         display: inline-block;
         line-height: 28px;
     }

@@ -1,15 +1,10 @@
 <template>
+    <head-view></head-view>
     <div class="goods_list_temp">
-        <div class="w1200 breadcrumb">
-            <el-breadcrumb>
-                <el-breadcrumb-item separator="/">首页</el-breadcrumb-item>
-                <el-breadcrumb-item v-if="!R.isEmpty(data.base64Decode.keywords)"><em style="color:#ca151e">搜索 "{{decodeURIComponent(data.base64Decode.keywords||'')}}" 结果列表</em></el-breadcrumb-item>
-                <el-breadcrumb-item v-else>商品列表</el-breadcrumb-item>
-            </el-breadcrumb>
-        </div>
+
 
         <!-- 搜索条件 S -->
-        <div class="goods_where w1200">
+        <div class="goods_where ">
             <div class="item">
                 <div class="title">商品分类：</div>
                 <div class="list">
@@ -58,28 +53,28 @@
                                 >默认
                                 <div class="sorts">
                                     <el-icon :class="((R.isEmpty(data.base64Decode.sort_order) || data.base64Decode.sort_order=='asc') && (R.isEmpty(data.base64Decode.sort_type) || data.base64Decode.sort_type==''))?'caret red':'caret'" type="caret-up" ><CaretTop /></el-icon>
-                                    <el-icon :class="((!R.isEmpty(data.base64Decode.sort_order) && data.base64Decode.sort_order=='desc') && (R.isEmpty(data.base64Decode.sort_type) || data.base64Decode.sort_type==''))?'caret red':'caret'" type="caret-down" ><CaretBottom /></el-icon> 
+                                    <el-icon :class="((!R.isEmpty(data.base64Decode.sort_order) && data.base64Decode.sort_order=='desc') && (R.isEmpty(data.base64Decode.sort_type) || data.base64Decode.sort_type==''))?'caret red':'caret'" type="caret-down" ><CaretBottom /></el-icon>
                                 </div>
                             </li>
                             <li @click="sortChange('goods_price')" :class="(!R.isEmpty(data.base64Decode.sort_type) && data.base64Decode.sort_type=='goods_price')?'red':''">
                                 价格
                                 <div class="sorts">
                                     <el-icon :class="((!R.isEmpty(data.base64Decode.sort_order) && data.base64Decode.sort_order=='asc') && (!R.isEmpty(data.base64Decode.sort_type) && data.base64Decode.sort_type=='goods_price'))?'caret red':'caret'" type="caret-up" ><CaretTop /></el-icon>
-                                    <el-icon :class="((!R.isEmpty(data.base64Decode.sort_order) && data.base64Decode.sort_order=='desc') && (!R.isEmpty(data.base64Decode.sort_type) && data.base64Decode.sort_type=='goods_price'))?'caret red':'caret'" type="caret-down" ><CaretBottom /></el-icon> 
+                                    <el-icon :class="((!R.isEmpty(data.base64Decode.sort_order) && data.base64Decode.sort_order=='desc') && (!R.isEmpty(data.base64Decode.sort_type) && data.base64Decode.sort_type=='goods_price'))?'caret red':'caret'" type="caret-down" ><CaretBottom /></el-icon>
                                 </div>
                             </li>
                             <li @click="sortChange('goods_sale')" :class="(!R.isEmpty(data.base64Decode.sort_type) && data.base64Decode.sort_type=='goods_sale')?'red':''">
                                 销量
                                 <div class="sorts">
                                     <el-icon :class="((!R.isEmpty(data.base64Decode.sort_order) && data.base64Decode.sort_order=='asc') && (!R.isEmpty(data.base64Decode.sort_type)  &&  data.base64Decode.sort_type=='goods_sale'))?'caret red':'caret'" type="caret-up" ><CaretTop /></el-icon>
-                                    <el-icon :class="((!R.isEmpty(data.base64Decode.sort_order) && data.base64Decode.sort_order=='desc') && (!R.isEmpty(data.base64Decode.sort_type)  &&  data.base64Decode.sort_type=='goods_sale'))?'caret red':'caret'" type="caret-down" ><CaretBottom /></el-icon> 
+                                    <el-icon :class="((!R.isEmpty(data.base64Decode.sort_order) && data.base64Decode.sort_order=='desc') && (!R.isEmpty(data.base64Decode.sort_type)  &&  data.base64Decode.sort_type=='goods_sale'))?'caret red':'caret'" type="caret-down" ><CaretBottom /></el-icon>
                                 </div>
                             </li>
                             <li @click="sortChange('order_comment_count')" :class="(!R.isEmpty(data.base64Decode.sort_type) && data.base64Decode.sort_type=='order_comment_count')?'red':''">
                                 评论
                                 <div class="sorts">
-                                    <el-icon :class="((!R.isEmpty(data.base64Decode.sort_order) && data.base64Decode.sort_order=='asc') && (!R.isEmpty(data.base64Decode.sort_type)  &&  data.base64Decode.sort_type=='order_comment_count'))?'caret red':'caret'"><CaretTop /></el-icon> 
-                                    <el-icon :class="((!R.isEmpty(data.base64Decode.sort_order) && data.base64Decode.sort_order=='desc') && (!R.isEmpty(data.base64Decode.sort_type)  &&  data.base64Decode.sort_type=='order_comment_count'))?'caret red':'caret'"><CaretBottom /></el-icon> 
+                                    <el-icon :class="((!R.isEmpty(data.base64Decode.sort_order) && data.base64Decode.sort_order=='asc') && (!R.isEmpty(data.base64Decode.sort_type)  &&  data.base64Decode.sort_type=='order_comment_count'))?'caret red':'caret'"><CaretTop /></el-icon>
+                                    <el-icon :class="((!R.isEmpty(data.base64Decode.sort_order) && data.base64Decode.sort_order=='desc') && (!R.isEmpty(data.base64Decode.sort_type)  &&  data.base64Decode.sort_type=='order_comment_count'))?'caret red':'caret'"><CaretBottom /></el-icon>
                                 </div>
                             </li>
                         </ul>
@@ -89,7 +84,7 @@
         </div>
         <!-- 搜索条件 E -->
 
-        <div class="s_goods_content w1200" v-if="data.params.total>0">
+        <div class="s_goods_content " v-if="data.params.total>0">
             <!-- 产品列表 S -->
             <div class="s_goods_list">
                 <div class="item" v-for="(v,k) in data.list" :key="k">
@@ -108,9 +103,9 @@
             <!-- 产品列表 E -->
 
             <div class="fy">
-                <el-pagination background 
-                layout="total, prev, pager, next" 
-                :page-size="data.params.per_page" 
+                <el-pagination background
+                layout="total, prev, pager, next"
+                :page-size="data.params.per_page"
                 @current-change="handleCurrentChange"
                 :page-count="data.params.last_page"
                 :current-page="data.params.current_page"
@@ -119,7 +114,7 @@
             </div>
         </div>
         <el-empty style="margin-top:40px" v-else />
- 
+
     </div>
 </template>
 
@@ -129,8 +124,10 @@ import { CaretTop,CaretBottom } from '@element-plus/icons'
 import { useStore } from 'vuex'
 import {_push} from "@/plugins/config"
 import {  useRoute } from 'vue-router'
+import headView from "@/components/home/head"
+
 export default {
-    components: {CaretTop,CaretBottom},
+    components: {CaretTop,CaretBottom,headView},
     setup(props) {
         const {proxy} = getCurrentInstance()
         const store = useStore()
@@ -172,7 +169,7 @@ export default {
                         data.base64Decode.sort_order= 'desc'
                     }
                 }
-                
+
                 data.base64Decode.sort_type= e
                 // console.log(this.base64Decode.sort_type)
             }
@@ -258,7 +255,7 @@ export default {
                 loadData()
             }
         },{deep:true})
-  
+
         return {
             data,
             handleCurrentChange,
@@ -317,7 +314,7 @@ export default {
                     }
                     &.red{
                        color:#fff;
-                       background-color:#ca151e; 
+                       background-color:#ca151e;
                     }
                 }
             }
@@ -334,7 +331,7 @@ export default {
                 ul li{
                     float: left;
                     margin-right: 20px;
-                    padding:0 10px; 
+                    padding:0 10px;
                     line-height: 40px;
                     color: #666;
                     font-size: 12px;
@@ -375,18 +372,18 @@ export default {
                             -webkit-transform: scale(0.80);   //关键
                             &:first-child{
                                top:16px;
-                               right:-5px; 
+                               right:-5px;
                             }
                             &:last-child{
                                top:22px;
-                               right:-5px; 
+                               right:-5px;
                             }
                             &.red{
                                 color:#ca151e;
                             }
                         }
                     }
-             
+
                 }
             }
         }

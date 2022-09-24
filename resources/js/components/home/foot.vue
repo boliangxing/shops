@@ -1,7 +1,7 @@
 <template>
     <nut-tabbar @tab-switch="tabSwitch" style="position:fixed;z-index:999;bottom:0px;left:0;right:0;">
         <nut-tabbar-item tab-title="首页" icon="home" to="/"></nut-tabbar-item>
-        <nut-tabbar-item tab-title="分类" icon="category" to="/stores"></nut-tabbar-item>
+<!--        <nut-tabbar-item tab-title="分类" icon="category" to="/stores"></nut-tabbar-item>-->
         <nut-tabbar-item tab-title="购物车" icon="cart" to="/carts"></nut-tabbar-item>
         <nut-tabbar-item tab-title="我的" icon="my" to="/user"></nut-tabbar-item>
     </nut-tabbar>
