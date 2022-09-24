@@ -263,6 +263,7 @@ export default {
         margin-top:15px;
     }
     ul li{
+        bottom: 20px;
         border:1px solid #efefef;
         padding-left: 20px;
         height: 60px;
