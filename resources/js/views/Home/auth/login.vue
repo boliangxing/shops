@@ -4,7 +4,7 @@
             <div class="login_item">
                 <div class="login_title">
                     <ul>
-                        <li class="red">帐号登录</li>
+                        <li class="red">Login</li>
                     </ul>
                 </div>
                 <div class="login_input">
@@ -21,14 +21,14 @@
                     <!--                                                    @keyup.enter="login"></div>-->
                 </div>
 
-                <div class="login_btn" @click="login">登 录</div>
+                <maz-btn color="secondary" @click="login">Login</maz-btn>
 
                 <div class="login_btn_b">
-                    <router-link to="/register">注册</router-link>
+                    <router-link to="/register">register</router-link>
                     |
-                    <router-link to="/forget_password">忘记密码？</router-link>
+                    <router-link to="/forget_password">forget password？</router-link>
                 </div>
-                <el-divider>其他登录方式</el-divider>
+                <el-divider>other</el-divider>
                 <fb:login-button
                     scope="public_profile,email"
                     onlogin="checkLoginState();">
@@ -69,7 +69,6 @@ function getUserInfo(fbToken) {
         // self.location = '/home/login.fbLogin.do?accessToken=' + fbToken;
     });
 }
-
 import {reactive, onMounted, getCurrentInstance} from "vue"
 import {useStore} from 'vuex'
 import {useRouter, useRoute} from 'vue-router'
@@ -78,10 +77,11 @@ import MazPhoneNumberInput from 'maz-ui/components/MazPhoneNumberInput'
 // import css
 import 'maz-ui/css/main.css'
 import MazInput from 'maz-ui/components/MazInput'
+import MazBtn from 'maz-ui/components/MazBtn'
 
 export default {
     components: {
-        MazPhoneNumberInput, MazInput
+        MazPhoneNumberInput, MazInput,MazBtn
     },
     setup(props) {
 
