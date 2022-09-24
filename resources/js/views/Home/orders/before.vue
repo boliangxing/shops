@@ -51,7 +51,6 @@
                                                 <dd :title="vo.goods_name">{{vo.goods_name}}</dd>
                                             </dl>
                                         </el-col>
-                                        <el-col :span="4"><div class="goods_info_th">{{vo.sku_name}}</div></el-col>
                                         <el-col :span="4"><div class="goods_info_th">{{vo.goods_price}}</div></el-col>
                                         <el-col :span="2"><div class="goods_info_th">{{vo.buy_num}}</div></el-col>
                                         <el-col :span="2"><div class="goods_info_th">-</div></el-col>
@@ -64,12 +63,12 @@
                 </div>
             </div>
 
-            <div class="remark">
-                <div class="goods_th">备注</div>
-                <div class="remark_input">
-                    <textarea cols="60" rows="3" v-model="data.remark"></textarea>
-                </div>
-            </div>
+<!--            <div class="remark">-->
+<!--                <div class="goods_th">备注</div>-->
+<!--                <div class="remark_input">-->
+<!--                    <textarea cols="60" rows="3" v-model="data.remark"></textarea>-->
+<!--                </div>-->
+<!--            </div>-->
 
             <div class="sum_block">
                 <div class="total">总金额：<span>￥{{data.total}}</span>( 不包含运费和优惠 )</div>
