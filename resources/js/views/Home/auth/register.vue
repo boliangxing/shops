@@ -1,5 +1,5 @@
 <template>
-    <div class="home_login" :style="'background: url('+ require('@/assets/Home/user_login__bgs.png').default +');'">
+    <div class="home_login" >
         <div class="login_block">
             <div class="login_item">
                 <div class="login_title">
