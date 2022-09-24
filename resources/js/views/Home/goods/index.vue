@@ -50,7 +50,7 @@
                     <div class="other">
                         <ul>
                             <li @click="sortChange('')" :class="(R.isEmpty(data.base64Decode.sort_type) || data.base64Decode.sort_type=='')?'red':''"
-                                >默认
+                            >默认
                                 <div class="sorts">
                                     <el-icon :class="((R.isEmpty(data.base64Decode.sort_order) || data.base64Decode.sort_order=='asc') && (R.isEmpty(data.base64Decode.sort_type) || data.base64Decode.sort_type==''))?'caret red':'caret'" type="caret-up" ><CaretTop /></el-icon>
                                     <el-icon :class="((!R.isEmpty(data.base64Decode.sort_order) && data.base64Decode.sort_order=='desc') && (R.isEmpty(data.base64Decode.sort_type) || data.base64Decode.sort_type==''))?'caret red':'caret'" type="caret-down" ><CaretBottom /></el-icon>
@@ -104,12 +104,12 @@
 
             <div class="fy">
                 <el-pagination background
-                layout="total, prev, pager, next"
-                :page-size="data.params.per_page"
-                @current-change="handleCurrentChange"
-                :page-count="data.params.last_page"
-                :current-page="data.params.current_page"
-                :total="data.params.total">
+                               layout="total, prev, pager, next"
+                               :page-size="data.params.per_page"
+                               @current-change="handleCurrentChange"
+                               :page-count="data.params.last_page"
+                               :current-page="data.params.current_page"
+                               :total="data.params.total">
                 </el-pagination>
             </div>
         </div>
@@ -125,7 +125,6 @@ import { useStore } from 'vuex'
 import {_push} from "@/plugins/config"
 import {  useRoute } from 'vue-router'
 import headView from "@/components/home/head"
-
 export default {
     components: {CaretTop,CaretBottom,headView},
     setup(props) {
@@ -313,8 +312,8 @@ export default {
                         background-color:#ca151e;
                     }
                     &.red{
-                       color:#fff;
-                       background-color:#ca151e;
+                        color:#fff;
+                        background-color:#ca151e;
                     }
                 }
             }
@@ -339,7 +338,7 @@ export default {
                         color:#ca151e;
                     }
                     &.red{
-                       color:#ca151e;
+                        color:#ca151e;
                     }
                 }
                 &:after{
@@ -358,7 +357,7 @@ export default {
                         color:#ca151e;
                     }
                     &.red{
-                       color:#ca151e;
+                        color:#ca151e;
                     }
                     .sorts{
                         position: absolute;
@@ -371,12 +370,12 @@ export default {
                             -webkit-transform-origin-x: 0; //缩小后文字居左
                             -webkit-transform: scale(0.80);   //关键
                             &:first-child{
-                               top:16px;
-                               right:-5px;
+                                top:16px;
+                                right:-5px;
                             }
                             &:last-child{
-                               top:22px;
-                               right:-5px;
+                                top:22px;
+                                right:-5px;
                             }
                             &.red{
                                 color:#ca151e;
@@ -395,7 +394,7 @@ export default {
 }
 .home .s_goods_list .item{
     float: left;
-    width: 224px;
+    width: 160px;
     height: 364px;
     box-sizing: border-box;
     margin: 0 20px 20px 0;
@@ -406,7 +405,7 @@ export default {
 .home .s_goods_list .item dl{
     border: 1px solid #efefef;
     box-sizing: border-box;
-    width: 224px;
+    width: 160px;
     height: 364px;
     transition: all 0.2s linear;
 }
@@ -463,8 +462,8 @@ export default {
     background: #ca151e;
 }
 .home .s_goods_list .item .el_image{
-    width: 176px;
-    height: 176px;
+    width: 130px;
+    height: 130px;
 }
 .breadcrumb{
     margin-top:30px;
