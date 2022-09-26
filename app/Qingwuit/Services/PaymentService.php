@@ -32,8 +32,8 @@ use PayPalCheckoutSdk\Orders\OrdersCreateRequest;
 class PaymentService extends BaseService
 {
 
-    const clientId = 'AesSV8gnPh72TjHIfr-jvkBUeE9yiNESP9TtzY-cUrW7fi6lvaz8vXVortILV9lLjIHz7dNnmhDdI566';//ID
-    const clientSecret = 'EFhTRJP9KMU1tHt8l-qmvjnCsS9I9jVGiAJ_f7wBPHnM81JXs3HKfOVUbYkHYHdmlHxRCy3kedjit6na';//秘钥
+    const clientId = env('PP_CID');//ID
+    const clientSecret = env('PP_CS');
     const accept_url = 'http://laravel-rbac.cc/Api/paypal/Callback';//返回地址
     const Currency = 'USD';//币种
     public function get_JsonData(){
