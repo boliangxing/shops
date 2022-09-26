@@ -32,8 +32,7 @@ use PayPalCheckoutSdk\Orders\OrdersCreateRequest;
 class PaymentService extends BaseService
 {
 
-    const clientId = env('PP_CID');//ID
-    const clientSecret = env('PP_CS');
+
     const accept_url = 'http://laravel-rbac.cc/Api/paypal/Callback';//返回地址
     const Currency = 'USD';//币种
     public function get_JsonData(){
@@ -202,8 +201,8 @@ class PaymentService extends BaseService
         if ($paymentName == 'paypal') {
             $this->PayPal = new ApiContext(
                 new OAuthTokenCredential(
-                    self::clientId,
-                    self::clientSecret
+                    env('PP_CID'),
+                    env('PP_CS')
                 )
             );
             $product = $orderPay['pay_no'];
@@ -388,8 +387,8 @@ class PaymentService extends BaseService
 
         $payerId = $_GET['PayerID'];
 
-        $clientId = self::clientId;//上面应用的clientId和secret
-        $secret = self::clientSecret;
+        $clientId = env('PP_CID');//上面应用的clientId和secret
+        $secret = env('PP_CS');
         $oAuth = new \PayPal\Auth\OAuthTokenCredential($clientId, $secret);
         $apiContext =  new \PayPal\Rest\ApiContext($oAuth);
         if(env('APP_DEBUG') === false ){
