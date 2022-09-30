@@ -73,7 +73,7 @@
 <!--            </div>-->
 
             <div class="sum_block">
-                <div class="total">total：<span>${{data.total}}</span>( Freight and discount not included )</div>
+                <div class="total">total：<span>${{data.total}}</span></div>
                 <div :class="loading?'btn hide':'btn'" @click="createOrder">{{data.loading?'加载中..':'创建订单'}}</div>
                 <div class="clear"></div>
             </div>
