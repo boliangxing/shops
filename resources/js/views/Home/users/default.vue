@@ -316,7 +316,7 @@ export default {
             }
             float: left;
             text-align: center;
-            width: 70px;
+            width: 145px;
             i{
                 position: absolute;
                 font-size: 26px;
