@@ -23,13 +23,13 @@
                                 <dd class="goods_title">{{vo.goods_name}}</dd>
                             </dl></router-link>
                             <span class="attr">{{vo.sku_name||'-'}}</span>
-                            <span class="price">￥{{vo.goods_price}}</span>
+                            <span class="price">${{vo.goods_price}}</span>
                             <span class="num">
                                 <em @click="edit(vo.cart_id,0)">-</em>
                                 <input type="text" disabled v-model="vo.buy_num">
                                 <em @click="edit(vo.cart_id,1)">+</em>
                             </span>
-                            <span class="total">￥{{R.formatFloat(vo.goods_price*vo.buy_num,2)}}</span>
+                            <span class="total">${{R.formatFloat(vo.goods_price*vo.buy_num,2)}}</span>
                             <span class="handle" @click="del(vo.cart_id)">Remove</span>
                         </li>
                     </ul>

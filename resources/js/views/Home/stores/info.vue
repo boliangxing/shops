@@ -48,7 +48,7 @@
                             <dt><img :src="v.goods_master_image" :alt="v.goods_name" fit="cover" /></dt>
                             <dd class="info">
                                 <div class="title">{{v.goods_name||''}}</div>
-                                <div class="price">￥{{v.goods_price}}</div>
+                                <div class="price">${{v.goods_price}}</div>
                                 <div class="round">{{k+1}}</div>
                             </dd></a>
                         </dl>
@@ -109,7 +109,7 @@
                                     <dt><el-image class="el_image" :src="v.goods_master_image" :alt="v.goods_name" /></dt>
                                     <dd class="product_title" :title="v.goods_name">{{v.goods_name}}</dd>
                                     <dd class="product_subtitle">{{v.goods_subname||'-'}}</dd>
-                                    <dd class="product_price">￥{{v.goods_price}}<span>{{v.goods_market_price}}元</span></dd>
+                                    <dd class="product_price">${{v.goods_price}}<span>{{v.goods_market_price}}元</span></dd>
                                 </dl>
                             </div>
                         </router-link></li>

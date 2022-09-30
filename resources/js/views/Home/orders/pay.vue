@@ -53,7 +53,7 @@
                                         <el-col :span="4"><div class="goods_info_th">{{vo.goods_price}}</div></el-col>
                                         <el-col :span="2"><div class="goods_info_th">{{vo.buy_num}}</div></el-col>
                                         <el-col :span="2"><div class="goods_info_th">-</div></el-col>
-                                        <el-col :span="2"><div class="goods_info_th red">￥{{vo.total_price}}</div></el-col>
+                                        <el-col :span="2"><div class="goods_info_th red">${{vo.total_price}}</div></el-col>
                                     </el-row>
                                 </li>
                             </ul>

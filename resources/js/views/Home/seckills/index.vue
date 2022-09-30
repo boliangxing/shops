@@ -48,16 +48,16 @@
                             <dt><img :src="v.goods_master_image" :alt="v.goods_name" /></dt>
                             <dd class="product_title" :title="v.goods_name">{{v.goods_name}}</dd>
                             <dd class="product_subtitle">{{v.goods_subname||'-'}}</dd>
-                            <dd class="product_price">￥{{v.goods_price}}<span>{{v.goods_market_price}}元</span></dd>
+                            <dd class="product_price">${{v.goods_price}}<span>{{v.goods_market_price}}元</span></dd>
                         </dl>
                     </div>
                 </router-link></li>
             </ul>
             <div class="clear"></div>
             <div class="fy" style="margin-top:30px">
-                <el-pagination background 
-                layout="total, prev, pager, next" 
-                :page-size="data.params.per_page" 
+                <el-pagination background
+                layout="total, prev, pager, next"
+                :page-size="data.params.per_page"
                 @current-change="handleCurrentChange"
                 :page-count="data.params.last_page"
                 :current-page="data.params.current_page"
@@ -92,7 +92,7 @@ export default {
                 total:0,
                 start_time:0,
             },
-        })  
+        })
 
         const loadData = async ()=>{
             data.timeList = [dayjs().get('h'),dayjs().add(1,'hours').get('h'),dayjs().add(2,'hours').get('h'),dayjs().add(3,'hours').get('h')]
@@ -197,7 +197,7 @@ export default {
     //                 this.$router.go(0);
     //             }
     //         },1000)
-            
+
     //     },
     // },
     // created() {
@@ -221,7 +221,7 @@ export default {
             &:nth-child(4n){
                 margin-right: 0;
             }
-            
+
             float: left;
             .product_act_in{
                 width: 220px;
@@ -274,7 +274,7 @@ export default {
                 }
             }
         }
-        
+
         ul li:hover .product_act_in{
             box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
             margin-top:-3px;

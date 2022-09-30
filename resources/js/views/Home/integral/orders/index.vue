@@ -62,7 +62,7 @@
                                         <el-col :span="4"><div class="goods_info_th">{{data.order.goods_price}}</div></el-col>
                                         <el-col :span="2"><div class="goods_info_th">{{data.order.buy_num}}</div></el-col>
                                         <el-col :span="2"><div class="goods_info_th">-</div></el-col>
-                                        <el-col :span="2"><div class="goods_info_th red">￥{{data.order.goods_price || (data.order.goods_price*$route.params.buy_num) || 0.00}}</div></el-col>
+                                        <el-col :span="2"><div class="goods_info_th red">${{data.order.goods_price || (data.order.goods_price*$route.params.buy_num) || 0.00}}</div></el-col>
                                     </el-row>
                                 </li>
                             </ul>
@@ -79,7 +79,7 @@
             </div>
 
             <div class="sum_block">
-                <div class="total">总积分：<span>￥{{data.order.goods_price || (data.order.goods_price*$route.params.buy_num) || 0.00}}</span>( 免运费 )</div>
+                <div class="total">总积分：<span>${{data.order.goods_price || (data.order.goods_price*$route.params.buy_num) || 0.00}}</span>( 免运费 )</div>
                 <div :class="loading?'btn hide':'btn'" @click="createOrder">{{data.loading?'加载中..':'支付积分'}}</div>
                 <div class="clear"></div>
             </div>
@@ -149,7 +149,7 @@ export default {
         // 创建订单
         const createOrder = ()=>{
             if(data.loading) return proxy.$message.error(proxy.$t('home.goods.createOrderThr'))
-        
+
             let params = {
                 id:route.params.id,
                 buy_num:route.params.buy_num||1,
@@ -177,7 +177,7 @@ export default {
             addressChange,createOrder,
         }
     },
-   
+
 };
 </script>
 <style lang="scss" scoped>

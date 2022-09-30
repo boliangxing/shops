@@ -56,7 +56,7 @@
                                         <el-col :span="4"><div class="goods_info_th">{{vo.goods_price}}</div></el-col>
                                         <el-col :span="2"><div class="goods_info_th">{{vo.buy_num}}</div></el-col>
                                         <el-col :span="2"><div class="goods_info_th">-</div></el-col>
-                                        <el-col :span="2"><div class="goods_info_th red">￥{{vo.total}}</div></el-col>
+                                        <el-col :span="2"><div class="goods_info_th red">${{vo.total}}</div></el-col>
                                     </el-row>
                                 </li>
                             </ul>
@@ -73,7 +73,7 @@
 <!--            </div>-->
 
             <div class="sum_block">
-                <div class="total">total：<span>￥{{data.total}}</span>( Freight and discount not included )</div>
+                <div class="total">total：<span>${{data.total}}</span>( Freight and discount not included )</div>
                 <div :class="loading?'btn hide':'btn'" @click="createOrder">{{data.loading?'加载中..':'创建订单'}}</div>
                 <div class="clear"></div>
             </div>

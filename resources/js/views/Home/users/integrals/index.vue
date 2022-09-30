@@ -20,7 +20,7 @@
                                 <div class="order_list_title">{{v.order_name||'-'}}</div>
                                 <div class="order_list_attr">{{v.sku_name||'-'}}</div>
                                 <div class="order_list_num">x {{v.buy_num||'1'}}</div>
-                                <div class="order_list_price">￥{{v.total_price||'0.00'}}</div>
+                                <div class="order_list_price">${{v.total_price||'0.00'}}</div>
                             </router-link></li>
                         </ul>
                     </div>
@@ -30,9 +30,9 @@
                     </div>
                 </div>
                 <div class="fy" v-if="data.params.total>0">
-                    <el-pagination background 
-                    layout="total, prev, pager, next" 
-                    :page-size="data.params.per_page" 
+                    <el-pagination background
+                    layout="total, prev, pager, next"
+                    :page-size="data.params.per_page"
                     @current-change="handleCurrentChange"
                     :page-count="data.params.last_page"
                     :current-page="data.params.current_page"
@@ -118,7 +118,7 @@ export default {
         }
 
         const pay_order = (order_id)=>{
-            let str = window.btoa(JSON.stringify({order_id:[order_id]})); 
+            let str = window.btoa(JSON.stringify({order_id:[order_id]}));
             router.push("/order/pay/"+str);
         }
 
@@ -196,7 +196,7 @@ export default {
                 margin-right: 4px;
                 left :34px;
             }
-        
+
         }
     }
 }

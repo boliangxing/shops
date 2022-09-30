@@ -84,7 +84,7 @@
                                 <div class="order_list_title">{{vo.goods_name||'-'}}</div>
                                 <div class="order_list_attr">{{vo.sku_name||'-'}}</div>
                                 <div class="order_list_num">x {{vo.buy_num||'1'}}</div>
-                                <div class="order_list_price">￥{{vo.total_price||'0.00'}}</div>
+                                <div class="order_list_price">${{vo.total_price||'0.00'}}</div>
                             </router-link></li>
                         </ul>
                     </div>
@@ -104,7 +104,7 @@
                 <dl v-for="(v,k) in data.fav" :key="k"><router-link :to="'/goods/'+v.out_id">
                     <dt><img :src="v.goods_master_image" :alt="v.goods_name"></dt>
                     <dd class="title">{{v.goods_name}}</dd>
-                    <dd class="price">￥{{v.goods_price}}</dd>
+                    <dd class="price">${{v.goods_price}}</dd>
                 </router-link></dl>
             </div>
             <el-empty v-else />
@@ -119,7 +119,7 @@
                 <dl v-for="(v,k) in data.history" :key="k"><router-link :to="'/goods/'+v.id">
                     <dt><img :src="v.image||''" :alt="v.goods_name||''"></dt>
                     <dd class="title">{{v.goods_name||'-'}}</dd>
-                    <dd class="price">￥{{v.goods_price||'0.00'}}</dd>
+                    <dd class="price">${{v.goods_price||'0.00'}}</dd>
                 </router-link></dl>
             </div>
             <el-empty v-else />

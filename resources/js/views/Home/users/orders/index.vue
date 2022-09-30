@@ -50,7 +50,7 @@
                                 <div class="order_list_title">{{vo.goods_name||'-'}}</div>
                                 <div class="order_list_attr">{{vo.sku_name||'-'}}</div>
                                 <div class="order_list_num">x {{vo.buy_num||'1'}}</div>
-                                <div class="order_list_price">￥{{vo.total_price||'0.00'}}</div>
+                                <div class="order_list_price">${{vo.total_price||'0.00'}}</div>
                             </router-link></li>
                         </ul>
                     </div>
