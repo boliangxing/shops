@@ -1,7 +1,7 @@
 <template>
     <div class="user_main table_lists">
         <div class="block_title">
-            用户资料
+            user msg
         </div>
         <div class="x20"></div>
         <el-form class="el_form" v-if="dialogParams.add && dialogParams.add.column.length>0" ref="addForm" label-position="right" :rules="dialogParams.rules||null" :model="formData" :label-width="dialogParams.labelWidth" :fullscreen="dialogParams.fullscreen">
@@ -40,11 +40,11 @@ export default {
         const formData = reactive({
 
         })
-        // 表单配置 
+        // 表单配置
         const addColumn = [
-             {label:'昵称',value:'nickname'},
-             {label:'用户头像',value:'avatar',type:'avatar',perView:true,option:JSON.stringify({width:150,height:150})},
-             {label:'性别',value:'sex',type:'radio'},
+             {label:'nickname',value:'nickname'},
+             {label:'avatar',value:'avatar',type:'avatar',perView:true,option:JSON.stringify({width:150,height:150})},
+             {label:'sex',value:'sex',type:'radio'},
         ]
 
         const dialogParams = reactive({
@@ -53,7 +53,7 @@ export default {
                 nickname:[{required:true,message:proxy.$t('msg.requiredMsg')}],
             },
             dictData:{
-                sex:[{label:'男',value:1},{label:'女',value:0}]
+                sex:[{label:'man',value:1},{label:'woman',value:0}]
             },
             add:{column:addColumn},
         })

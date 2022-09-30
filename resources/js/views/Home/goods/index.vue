@@ -6,11 +6,11 @@
         <!-- 搜索条件 S -->
         <div class="goods_where ">
             <div class="item">
-                <div class="title">商品分类：</div>
+                <div class="title">Category：</div>
                 <div class="list">
                     <div class="first">
                         <ul>
-                            <li :class="(R.isEmpty(data.base64Decode.pid) || data.base64Decode.pid==0)?'red':''" @click="classChange(0,{},3)">全部</li>
+                            <li :class="(R.isEmpty(data.base64Decode.pid) || data.base64Decode.pid==0)?'red':''" @click="classChange(0,{},3)">All</li>
                             <li :class="(!R.isEmpty(data.base64Decode.pid) && data.base64Decode.pid==v.id)?'red':''" v-for="(v,k) in data.common.classes" :key="k" @click="classChange(v.id,v)">{{v.name}}</li>
                         </ul>
                     </div>
@@ -34,44 +34,44 @@
                 </div>
             </div>
             <div class="item">
-                <div class="title">品牌筛选：</div>
+                <div class="title">screen：</div>
                 <div class="list">
                     <div class="first">
                         <ul>
-                            <li :class="(R.isEmpty(data.base64Decode.brand_id) || data.base64Decode.brand_id==0)?'red':''" @click="brandChange(0)" >全部</li>
+                            <li :class="(R.isEmpty(data.base64Decode.brand_id) || data.base64Decode.brand_id==0)?'red':''" @click="brandChange(0)" >All</li>
                             <li :class="(!R.isEmpty(data.base64Decode.brand_id) && data.base64Decode.brand_id==v.id)?'red':''" v-for="(v,k) in data.common.brands" :key="k"  @click="brandChange(v.id)">{{v.name}}</li>
                         </ul>
                     </div>
                 </div>
             </div>
             <div class="item">
-                <div class="title">筛选排序：</div>
+                <div class="title">sort：</div>
                 <div class="list">
                     <div class="other">
                         <ul>
                             <li @click="sortChange('')" :class="(R.isEmpty(data.base64Decode.sort_type) || data.base64Decode.sort_type=='')?'red':''"
-                            >默认
+                            >default
                                 <div class="sorts">
                                     <el-icon :class="((R.isEmpty(data.base64Decode.sort_order) || data.base64Decode.sort_order=='asc') && (R.isEmpty(data.base64Decode.sort_type) || data.base64Decode.sort_type==''))?'caret red':'caret'" type="caret-up" ><CaretTop /></el-icon>
                                     <el-icon :class="((!R.isEmpty(data.base64Decode.sort_order) && data.base64Decode.sort_order=='desc') && (R.isEmpty(data.base64Decode.sort_type) || data.base64Decode.sort_type==''))?'caret red':'caret'" type="caret-down" ><CaretBottom /></el-icon>
                                 </div>
                             </li>
                             <li @click="sortChange('goods_price')" :class="(!R.isEmpty(data.base64Decode.sort_type) && data.base64Decode.sort_type=='goods_price')?'red':''">
-                                价格
+                                price
                                 <div class="sorts">
                                     <el-icon :class="((!R.isEmpty(data.base64Decode.sort_order) && data.base64Decode.sort_order=='asc') && (!R.isEmpty(data.base64Decode.sort_type) && data.base64Decode.sort_type=='goods_price'))?'caret red':'caret'" type="caret-up" ><CaretTop /></el-icon>
                                     <el-icon :class="((!R.isEmpty(data.base64Decode.sort_order) && data.base64Decode.sort_order=='desc') && (!R.isEmpty(data.base64Decode.sort_type) && data.base64Decode.sort_type=='goods_price'))?'caret red':'caret'" type="caret-down" ><CaretBottom /></el-icon>
                                 </div>
                             </li>
                             <li @click="sortChange('goods_sale')" :class="(!R.isEmpty(data.base64Decode.sort_type) && data.base64Decode.sort_type=='goods_sale')?'red':''">
-                                销量
+                                sales
                                 <div class="sorts">
                                     <el-icon :class="((!R.isEmpty(data.base64Decode.sort_order) && data.base64Decode.sort_order=='asc') && (!R.isEmpty(data.base64Decode.sort_type)  &&  data.base64Decode.sort_type=='goods_sale'))?'caret red':'caret'" type="caret-up" ><CaretTop /></el-icon>
                                     <el-icon :class="((!R.isEmpty(data.base64Decode.sort_order) && data.base64Decode.sort_order=='desc') && (!R.isEmpty(data.base64Decode.sort_type)  &&  data.base64Decode.sort_type=='goods_sale'))?'caret red':'caret'" type="caret-down" ><CaretBottom /></el-icon>
                                 </div>
                             </li>
                             <li @click="sortChange('order_comment_count')" :class="(!R.isEmpty(data.base64Decode.sort_type) && data.base64Decode.sort_type=='order_comment_count')?'red':''">
-                                评论
+                                comment
                                 <div class="sorts">
                                     <el-icon :class="((!R.isEmpty(data.base64Decode.sort_order) && data.base64Decode.sort_order=='asc') && (!R.isEmpty(data.base64Decode.sort_type)  &&  data.base64Decode.sort_type=='order_comment_count'))?'caret red':'caret'"><CaretTop /></el-icon>
                                     <el-icon :class="((!R.isEmpty(data.base64Decode.sort_order) && data.base64Decode.sort_order=='desc') && (!R.isEmpty(data.base64Decode.sort_type)  &&  data.base64Decode.sort_type=='order_comment_count'))?'caret red':'caret'"><CaretBottom /></el-icon>
@@ -93,8 +93,8 @@
                         <dd class="title">{{v.goods_name}}</dd>
                         <dd class="price">{{$t('btn.money')}}{{v.goods_price}}</dd>
                         <dd>
-                            <span>立即购买</span>
-                            <span>{{v.order_comment_count}} 人评论</span>
+                            <span>Buy</span>
+                            <span>{{v.order_comment_count}} Comment</span>
                         </dd></router-link>
                     </dl>
                 </div>

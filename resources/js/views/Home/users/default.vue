@@ -5,17 +5,17 @@
                 <router-link to="/user/info">
 
                     <dt><i class="fa fa-credit-card" /></dt>
-                    <dd class="title">账户信息</dd></router-link>
+                    <dd class="title">userinfo</dd></router-link>
             </dl>
 
             <dl class="item2">
                 <dt><i class="fa fa-credit-card" /></dt>
-                <dd class="title">账号余额</dd>
-                <dd class="money">{{data.user_info.money||'0.00'}} 元</dd>
+                <dd class="title">Account balance</dd>
+                <dd class="money">{{data.user_info.money||'0.00'}} $</dd>
             </dl>
             <dl class="item3">
                 <dt><i class="fa fa-btc" /></dt>
-                <dd class="title" @click="logout()">注销账号</dd>
+                <dd class="title" @click="logout()">logout</dd>
             </dl>
 <!--            <dl class="item3">-->
 <!--                <dt><i class="fa fa-credit-card" /></dt>-->
@@ -32,19 +32,22 @@
                 <li>
                     <router-link :to="{name:'user_order',params:{status:1}}">
 
-                    <span><el-badge :value="data.count[0]" :hidden="data.count[0]==0" :max="99">待支付</el-badge></span>
+                    <span><el-badge :value="data.count[0]" :hidden="data.count[0]==0" :max="99">Waiting for payment
+                    </el-badge></span>
                     </router-link>
                 </li>
                 <li>
                     <router-link :to="{name:'user_order',params:{status:2}}">
 
-                    <span><el-badge :value="data.count[1]" :hidden="data.count[1]==0" :max="99">待发货</el-badge></span>
+                    <span><el-badge :value="data.count[1]" :hidden="data.count[1]==0" :max="99">Waiting for delivery
+                    </el-badge></span>
                     </router-link>
                 </li>
                 <li>
                     <router-link :to="{name:'user_order',params:{status:3}}">
 
-                    <span><el-badge :value="data.count[2]" :hidden="data.count[2]==0" :max="99">待收货</el-badge></span>
+                    <span><el-badge :value="data.count[2]" :hidden="data.count[2]==0" :max="99">Waiting for receipt
+                    </el-badge></span>
                     </router-link>
                 </li>
 <!--                <li>-->
@@ -64,15 +67,15 @@
 
         <div class="user_main">
             <div class="block_title">
-                <span><router-link to="/user/order">查看更多</router-link></span>
-                近期订单
+<!--                <span><router-link to="/user/order">more</router-link></span>-->
+                Recent Orders
             </div>
             <div class="x20"></div>
             <div class="order_list" v-if="data.order.length>0">
                 <div class="order_item" v-for="(v,k) in data.order" :key="k">
                     <div class="order_item_title">
                         <span>{{v.created_at}}<font :color="v.order_status==6?'#42b983':'#ca151e'">{{v.order_status_cn||'-'}}</font></span>
-                        订单号：{{v.order_no||'-'}}
+                        order number：{{v.order_no||'-'}}
                     </div>
                     <div class="order_item_list"  @click="$router.push('/user/order/'+v.id)">
                         <ul>
@@ -92,8 +95,9 @@
 
         <div class="user_main">
             <div class="block_title">
-                <span><router-link to="/user/favorite">查看更多</router-link></span>
-                近期收藏
+<!--                <span><router-link to="/user/favorite">more</router-link></span>-->
+                Recent collection
+
             </div>
             <div class="x20"></div>
             <div class="fav_item_list" v-if="data.fav.length>0">
@@ -108,7 +112,7 @@
 
         <div class="user_main">
             <div class="block_title">
-                游览历史
+                history
             </div>
             <div class="x20"></div>
             <div class="fav_item_list" v-if="data.history.length>0">

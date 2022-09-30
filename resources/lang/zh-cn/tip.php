@@ -3,41 +3,41 @@
 // 简体中文
 
 return [
-    'error'                             =>  '操作失败.',
-    'success'                           =>  '操作成功.',
-    'failed'                            =>  '异常错误.',
-    'loginOk'                           =>  '登录成功.',
-    'loginErr'                          =>  '登录失败.',
-    'loginThr'                          =>  '登录异常.',
-    'loginOut'                          =>  '注销成功.',
-    'loginInv'                          =>  '账号失效.',
-    'pmsThr'                            =>  '权限异常.',
-    'pwdErr'                            =>  '密码错误.',
-    'userThr'                           =>  '账号异常.',
-    'oauthThr'                          =>  'oAuth异常.',
-    'configThr'                         =>  '配置信息异常.',
-    'phoneThr'                          =>  '手机号码错误.',
-    'userExist'                         =>  '手机号码错误.',
-    'phoneExist'                        =>  '手机号码已经存在.',
+    'error'                             =>  'error.',
+    'success'                           =>  'success.',
+    'failed'                            =>  'failed.',
+    'loginOk'                           =>  'loginOk.',
+    'loginErr'                          =>  'loginErr.',
+    'loginThr'                          =>  'loginThr.',
+    'loginOut'                          =>  'loginOut.',
+    'loginInv'                          =>  'loginInv.',
+    'pmsThr'                            =>  'pmsThr.',
+    'pwdErr'                            =>  'pwdErr.',
+    'userThr'                           =>  'userThr.',
+    'oauthThr'                          =>  'oauthThr.',
+    'configThr'                         =>  'configThr.',
+    'phoneThr'                          =>  'phoneThr.',
+    'userExist'                         =>  'userExist.',
+    'phoneExist'                        =>  'phoneExist.',
 
     // 订单状态
-    'orderCancel'                                  =>   '订单取消',
-    'waitPay'                                      =>   '等待支付',
-    'waitSend'                                     =>   '等待发货',
-    'waitRec'                                      =>   '等待收货',
-    'orderConfirm'                                 =>   '等待收货', // 确认收货
-    'waitComment'                                  =>   '等待评论',
-    'orderRefund'                                  =>   '售后退款',
-    'orderReturned'                                =>   '售后退货',
-    'orderRefundOver'                              =>   '售后完成',
-    'orderCompletion'                              =>   '订单完成',
+    'orderCancel'                                  =>   'orderCancel',
+    'waitPay'                                      =>   'waitPay',
+    'waitSend'                                     =>   'waitSend',
+    'waitRec'                                      =>   'waitRec',
+    'orderConfirm'                                 =>   'orderConfirm', // 确认收货
+    'waitComment'                                  =>   'waitComment',
+    'orderRefund'                                  =>   'orderRefund',
+    'orderReturned'                                =>   'orderReturned',
+    'orderRefundOver'                              =>   'orderRefundOver',
+    'orderCompletion'                              =>   'orderCompletion',
 
-    'systemHandleMoney'                            =>   '系统处理',
+    'systemHandleMoney'                            =>   'systemHandleMoney',
 
     // 支付类型
-    'paymentWechat'                                =>   '微信支付',
-    'paymentAli'                                   =>   '支付宝支付',
-    'paymentMoney'                                 =>   '余额支付',
+    'paymentWechat'                                =>   'paymentWechat',
+    'paymentAli'                                   =>   'paymentAli',
+    'paymentMoney'                                 =>   'paymentMoney',
 
 
     // 权限的一些中文
@@ -59,14 +59,14 @@ return [
 
     // 短信相关sms
     'sms' => [
-        'phoneError'    =>  '手机号码不正确.',
-        'signEmpty'     =>  '签名不存在.',
-        'sendErr'       =>  '发送短信失败.',
-        'smsErr'        =>  '验证码错误.',
-        'smsInvalid'    =>  '验证码失效.',
-        'reSend'        =>  '请不要频繁发送.',
-        'phoneExists'   =>  '手机号码已经存在.',
-        'phoneNoExists' =>  '手机号码不存在.',
+        'phoneError'    =>  'phoneError.',
+        'signEmpty'     =>  'signEmpty.',
+        'sendErr'       =>  'sendErr.',
+        'smsErr'        =>  'smsErr.',
+        'smsInvalid'    =>  'smsInvalid.',
+        'reSend'        =>  'reSend.',
+        'phoneExists'   =>  'phoneExists.',
+        'phoneNoExists' =>  'phoneNoExists.',
     ],
 
     // 支付相关payment
@@ -107,17 +107,17 @@ return [
 
     // 订单
     'order' => [
-        'error'     =>  '订单非法.',
-        'empty'     =>  '没有找到订单.',
-        'handleErr' =>  '订单操作失败.',
-        'stockErr'  =>  '库存不足.',
-        'addrErr'   =>  '地址不能为空.',
-        'paymentErr' =>  '支付方式非法.',
-        'payed'     =>  '该订单已支付.',
-        'payErr'    =>  '支付失败.',
-        'moneyNotEnough'    =>  '余额不足.',
+        'error'     =>  'error.',
+        'empty'     =>  'empty.',
+        'handleErr' =>  'handleErr.',
+        'stockErr'  =>  'stockErr.',
+        'addrErr'   =>  'addrErr.',
+        'paymentErr' =>  'paymentErr.',
+        'payed'     =>  'payed.',
+        'payErr'    =>  'Fail.',
+        'moneyNotEnough'    =>  'money Not Enough.',
         'moneyPay'  =>  '重复创建支付订单.',
-        'deliveryEmpty'  =>  '物流信息不能为空.',
+        'deliveryEmpty'  =>  'delivery is empty.',
         'orderSettlement'  =>  '系统结算.',
         'orderSettlementHandle'  =>  '手动结算.',
         'goodsCommission'  =>  '商品分佣',

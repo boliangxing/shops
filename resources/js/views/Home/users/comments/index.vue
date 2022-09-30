@@ -1,7 +1,7 @@
 <template>
     <div class="user_main table_lists">
         <div class="block_title">
-            我的评论
+            my comments
         </div>
         <div class="x20 clear_line"></div>
         <table-view :handleWidth="80" :options="options" :params="{isResource:'HomeUser',isWith:'goods,user'}" :btnConfig="btnConfigs" :dialogParam="dialogParam"></table-view>
@@ -26,7 +26,7 @@ export default {
             {label:'内容',value:'content',overFlow:true},
             {label:'创建时间',value:'created_at'},
         ]);
-        // 表单配置 
+        // 表单配置
         const addColumn = [
              {label:'昵称',value:'nickname'},
              {label:'用户名',value:'username'},

@@ -4,7 +4,7 @@
 
         <!-- 地址信息选择 S -->
         <div class="block">
-            <div class="title">选择送货地址</div>
+            <div class="title">Select shipping address</div>
             <div class="address_list" v-if="data.address.length>0">
                 <ul>
                     <li :class="v.is_default==1?'red':''" v-for="(v,k) in data.address" :key="k" @click="addressChange(v.id)">
@@ -19,14 +19,16 @@
             </div>
 
             <div class="empty_address" v-else>
-                没有设置收货地址，请先前往<router-link to="/user/address">设置</router-link>
+                No delivery address is set, please go to
+
+                <router-link to="/user/address">Setting</router-link>
             </div>
         </div>
         <!-- 地址信息选择 E -->
 
         <!-- 预生成订单信息 S -->
         <div class="block">
-            <div class="title">商品信息</div>
+            <div class="title">Product information</div>
             <div class="goods_list">
 
 
@@ -71,7 +73,7 @@
 <!--            </div>-->
 
             <div class="sum_block">
-                <div class="total">总金额：<span>￥{{data.total}}</span>( 不包含运费和优惠 )</div>
+                <div class="total">total：<span>￥{{data.total}}</span>( Freight and discount not included )</div>
                 <div :class="loading?'btn hide':'btn'" @click="createOrder">{{data.loading?'加载中..':'创建订单'}}</div>
                 <div class="clear"></div>
             </div>

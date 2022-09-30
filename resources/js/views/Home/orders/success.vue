@@ -4,11 +4,11 @@
 
         <el-result
             icon="success"
-            title="订单支付成功！"
-            sub-title="如需查看更多订单信息，请前往个人中心查看."
+            title="Order payment succeeded！"
+            sub-title="For more order information, please go to the Personal Center."
         >
             <template #extra>
-            <router-link to="/user">前往个人中心</router-link>
+            <router-link to="/user">go to the Personal Center</router-link>
             </template>
         </el-result>
     </div>

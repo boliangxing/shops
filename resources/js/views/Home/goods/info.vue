@@ -24,17 +24,17 @@
                 </div>
                 <div class="goods_info_group">
                     <template v-if="data.seckills">
-                        <div class="goods_info_price"><span>秒杀价：</span>{{$t('btn.money')}}{{data.goods_info.goods_price*(1-data.seckills.discount/100)||'0.00'}}</div>
-                        <div class="goods_info_market_price"><span>市场价：</span><div class="overx_goods_info">{{$t('btn.money')}}{{data.goods_info.goods_market_price||'0.00'}}</div></div>
+                        <div class="goods_info_price"><span>Price：</span>{{$t('btn.money')}}{{data.goods_info.goods_price*(1-data.seckills.discount/100)||'0.00'}}</div>
+                        <div class="goods_info_market_price"><span>marketPrice：</span><div class="overx_goods_info">{{$t('btn.money')}}{{data.goods_info.goods_market_price||'0.00'}}</div></div>
                     </template>
                     <template v-else>
-                        <div class="goods_info_price"><span>商城价：</span>{{$t('btn.money')}}{{data.goods_info.goods_price||'0.00'}}</div>
-                        <div class="goods_info_market_price"><span>市场价：</span><div class="overx_goods_info">{{$t('btn.money')}}{{data.goods_info.goods_market_price||'0.00'}}</div></div>
+                        <div class="goods_info_price"><span>Price：</span>{{$t('btn.money')}}{{data.goods_info.goods_price||'0.00'}}</div>
+                        <div class="goods_info_market_price"><span>marketPrice：</span><div class="overx_goods_info">{{$t('btn.money')}}{{data.goods_info.goods_market_price||'0.00'}}</div></div>
                     </template>
 
                     <!-- <div class="goods_info_active"><span>优惠：</span><font class="noy" v-if="goods_info.goods_freight<=0 && goods_info.freight_id<=0">包邮</font><font v-else-if="store_info.free_freight>0">满{{store_info.free_freight}}包邮</font><font class="noz" v-else>暂无优惠</font></div> -->
-                    <div class="goods_info_sale_num">累计销量<em color="#ca151e">{{data.goods_info.goods_sale||0}}</em></div>
-                    <div class="goods_info_phone_read">手机查看<i style="font-size:16px" class="fa fa-qrcode"></i></div>
+                    <div class="goods_info_sale_num">Cumulative sales<em color="#ca151e">{{data.goods_info.goods_sale||0}}</em></div>
+                    <div class="goods_info_phone_read">Read<i style="font-size:16px" class="fa fa-qrcode"></i></div>
 
                     <!-- 优惠券 S -->
                     <div class="coupons_block" v-if="data.coupons.length>0">
@@ -54,12 +54,12 @@
                 <!-- 参加活动 -->
                 <div class="goods_info_active">
                     <div class="goods_skill" v-if="data.seckills">
-                        <span><el-icon style="margin:0 10px"><Timer /></el-icon>参加秒杀活动</span>
-                        <span class="span_time">距离结束 {{data.seckills.format_time||'0 天 00 时 00 分 00 秒'}}</span>
+                        <span><el-icon style="margin:0 10px"><Timer /></el-icon>Participate in Seckill</span>
+                        <span class="span_time">Distance  {{data.seckills.format_time||'0 天 00 时 00 分 00 秒'}}</span>
                     </div>
                     <div class="goods_skill tuan_active" v-if="data.collectives"  @click="data.collective_id=-1;buy()">
-                        <span><el-icon style="margin:0 10px"><UserFilled /></el-icon>参加团购活动 ( 点击开新团 ) </span>
-                        <span class="span_time">团购价：{{$t('btn.money')}} {{R.formatFloat(data.goods_info.goods_price*(1-data.collectives.discount/100)||'0.00')}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 需要 {{data.collectives.need}} 人</span>
+                        <span><el-icon style="margin:0 10px"><UserFilled /></el-icon>Join activity </span>
+                        <span class="span_time">activity price：{{$t('btn.money')}} {{R.formatFloat(data.goods_info.goods_price*(1-data.collectives.discount/100)||'0.00')}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 需要 {{data.collectives.need}} 人</span>
                     </div>
                     <div class="tuan_list" v-if="data.collectives && data.collective_list.length>0">
                         <el-carousel autoplay  :direction="'vertical'" height="30px" indicator-position="none">
@@ -67,8 +67,8 @@
                                 <div class="tuan_item">
                                     <img :src="v.avatar||require('@/assets/Home/user_default.png').default">
                                     <div class="nickname">{{v.nickname}}</div>
-                                    <div class="btn" @click="data.collective_id=v.id;buy()">参团</div>
-                                    <div class="orders_count">已经参团 {{v.orders_count}} / {{v.need}} 人</div>
+                                    <div class="btn" @click="data.collective_id=v.id;buy()">join</div>
+                                    <div class="orders_count">joined {{v.orders_count}} / {{v.need}} number</div>
                                 </div>
                             </el-carousel-item>
                         </el-carousel>
@@ -92,11 +92,11 @@
                 </div>
 
                 <div class="goods_info_num">
-                    <div class="goods_info_num_title">购买数量：</div>
+                    <div class="goods_info_num_title">purchases：</div>
                     <div class="goods_info_num_jian" @click="change_buy_num(false)">-</div>
                     <div class="goods_info_num_input"><input v-model="data.buy_num" type="number"  /></div>
                     <div class="goods_info_num_jia" @click="change_buy_num(true)">+</div>
-                    <div class="goods_info_num_stock">&nbsp;&nbsp;{{data.goods_info.goods_stock}} 库存</div>
+                    <div class="goods_info_num_stock">&nbsp;&nbsp;{{data.goods_info.goods_stock}} stock</div>
                     <div class="goods_info_btn">
                         <!-- <div v-show="goods_info.is_groupbuy==1" class="goods_info_add_groupbuy" @click="group_buy()"><i class="icon iconfont">&#xe601;</i>选择团购</div> -->
                         <template v-if="data.seckills">

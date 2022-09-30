@@ -24,7 +24,7 @@
                         <MazInput class="yzm" type="code" v-model="data.code" :placeholder="$t('btn.code')"
                                   @keyup.enter="register"></MazInput>
                         <span :class="data.math>0?'yzmbtn dis':'yzmbtn'"
-                                        >{{ data.code_text }}</span>
+                              @click="sendSms"    >{{ data.code_text }}</span>
 
                     </div>
                 </div>

@@ -1,19 +1,19 @@
 <template>
     <div class="user_main">
         <div class="block_title">
-            订单详情
+            detail
         </div>
         <div class="x20"></div>
 
-        
+
         <div class="admin_form">
             <div class="order_info_list">
                 <el-row>
                     <el-col :span="12">
-                        订单号：<span class="content">{{data.info.order_no||'-'}}</span>
+                        order number：<span class="content">{{data.info.order_no||'-'}}</span>
                     </el-col>
                     <el-col :span="12">
-                        状态：
+                        status：
                         <span class="content">
                             <el-tag type="danger" v-show="data.info.order_status==0">{{data.info.order_status_cn}}</el-tag>
                             <el-tag type="warning" v-show="data.info.order_status==1">{{data.info.order_status_cn}}</el-tag>
@@ -25,48 +25,50 @@
                 </el-row>
             </div>
 
-            <div style="margin-top:40px"><span style="font-size: 14px;font-weight: bold;">订单支付</span></div>
+            <div style="margin-top:40px"><span style="font-size: 14px;font-weight: bold;">Order payment
+
+</span></div>
             <div class="x20"></div>
-            
+
             <div class="order_info_list">
                 <el-row>
                     <el-col :span="8">
-                        支付方式：<span class="content">{{data.info.payment_name_cn||'-'}}</span>
+                        Payment method ：<span class="content">{{data.info.payment_name_cn||'-'}}</span>
                     </el-col>
                     <el-col :span="8">
-                        支付时间：<span class="content">{{data.info.pay_time||'-'}}</span>
+                        Payment time ：<span class="content">{{data.info.pay_time||'-'}}</span>
                     </el-col>
                     <el-col :span="8">
-                        快递单号：<span class="content">{{data.info.delivery_no||'-'}}</span>
+                        courier number ：<span class="content">{{data.info.delivery_no||'-'}}</span>
                     </el-col>
                 </el-row>
             </div>
             <div class="order_info_list">
                 <el-row>
                     <el-col :span="24">
-                        备注：<span class="content">{{data.info.remark||'-'}}</span>
+                        remake：<span class="content">{{data.info.remark||'-'}}</span>
                     </el-col>
                 </el-row>
             </div>
 
-            <div style="margin-top:40px"><span style="font-size: 14px;font-weight: bold;">物流地址</span></div>
+            <div style="margin-top:40px"><span style="font-size: 14px;font-weight: bold;">address</span></div>
             <div class="x20"></div>
 
             <div class="order_info_list">
                 <el-row>
                     <el-col :span="8">
-                        收货人：<span class="content">{{data.info.receive_name}}</span>
+                        consignee ：<span class="content">{{data.info.receive_name}}</span>
                     </el-col>
                     <el-col :span="8">
-                        联系电话：<span class="content">{{data.info.receive_tel}}</span>
+                        phone：<span class="content">{{data.info.receive_tel}}</span>
                     </el-col>
                     <el-col :span="8">
-                        取货地址：<span class="content">{{data.info.receive_area+data.info.receive_address}}</span>
+                        Picking address ：<span class="content">{{data.info.receive_area+data.info.receive_address}}</span>
                     </el-col>
                 </el-row>
             </div>
 
-            <div style="margin-top:40px"><span style="font-size: 14px;font-weight: bold;">商品信息</span></div>
+            <div style="margin-top:40px"><span style="font-size: 14px;font-weight: bold;">Product information</span></div>
             <div class="x20"></div>
 
             <div class="admin_table_list">
@@ -88,9 +90,9 @@
             </div>
 
 
-            <div class="order_info_right_price">总计：￥ {{data.info.total_price}}<span data-v-01d38243="">（运费：{{data.info.freight_money}}）</span></div>
+            <div class="order_info_right_price">total：$ {{data.info.total_price}}<span data-v-01d38243="">（freight：{{data.info.freight_money}}）</span></div>
 
-            <div style="margin-top:40px"><span style="font-size: 14px;font-weight: bold;">快递信息</span></div>
+            <div style="margin-top:40px"><span style="font-size: 14px;font-weight: bold;">Express information</span></div>
             <div class="x20"></div>
 
             <div class="order_info_kd">
@@ -103,8 +105,8 @@
             </div>
             <br>
         </div>
-        
-        
+
+
     </div>
 </template>
 

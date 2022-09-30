@@ -3,6 +3,8 @@
 namespace App\Qingwuit\Services;
 
 use Overtrue\EasySms\EasySms;
+use Overtrue\EasySms\PhoneNumber;
+
 
 class SmsService extends BaseService
 {
@@ -43,6 +45,7 @@ class SmsService extends BaseService
                 'sdk_app_id' => '', // 要在.env文件配置好相应的值
 
                 'app_key' => '', // 要在.env文件配置好相应的值
+                'sign_name' => '', // 短信签名，如果使用默认签名，该字段可缺省（对应官方文档中的sign）
 
             ],
             //...
@@ -61,6 +64,8 @@ class SmsService extends BaseService
      */
     public function sendSms($phone, $name)
     {
+
+
         // 检测手机号码
 //        if (!$this->check_phone($phone)) {
 //            return $this->formatError(__('tip.sms.phoneError'));
@@ -69,7 +74,6 @@ class SmsService extends BaseService
         $configService = $this->getService('Configs');
         $alisms = $configService->getFormatConfig('sms'); // 获取下签名密钥
         $sms = $this->getService('Sms', true)->where('name', $name)->first(); // 获取签名配置
-
         if (!$sms) {
             return $this->formatError(__('tip.sms.signEmpty'));
         }
@@ -101,6 +105,7 @@ class SmsService extends BaseService
             ];
             $smsLog = $smsLog->create($saveData);
 
+            // 发送到国际码为 31 的国际号码
             $rs = $easySms->send($phone, [
                 'content'  => '',
                 'template' => $sms['code'],
@@ -164,7 +169,7 @@ class SmsService extends BaseService
 
         // 创建注册的时候判断是否存在账号
         if ($name == 'register') {
-            if ($this->getService('User', true)->where('phone', $phone)->exists()) {
+            if ($this->getService('User', true)->where('username', $phone)->exists()) {
                 return $this->formatError(__('tip.sms.phoneExists'));
             }
         }

@@ -4,19 +4,19 @@
 
         <!-- 当前用户余额 S -->
         <div class="block">
-            <div class="title"><div class="now_money">当前账号余额：￥{{data.userInfo.money||0.00}}</div></div>
+            <div class="title"><div class="now_money">account balance：${{data.userInfo.money||0.00}}</div></div>
 
         </div>
         <!-- 当前用户余额 E -->
 
         <!-- 选择支付方式 S -->
         <div class="block">
-            <div class="title">选择支付方式</div>
+            <div class="title">Select payment method</div>
             <div class="pay">
                 <ul>
                     <li @click="data.visible=true;"><img :src="require('@/assets/Home/pc_money_pay.png').default" alt="mpay"></li>
-                    <li @click="pay('wechat')"><img :src="require('@/assets/Home/pc_wxpay.jpg').default" alt="wechatpay"></li>
-                    <li @click="pay('alipay')"><img :src="require('@/assets/Home/pc_alipay.jpg').default" alt="alipay"></li>
+<!--                    <li @click="pay('wechat')"><img :src="require('@/assets/Home/pc_wxpay.jpg').default" alt="wechatpay"></li>-->
+<!--                    <li @click="pay('alipay')"><img :src="require('@/assets/Home/pc_alipay.jpg').default" alt="alipay"></li>-->
                     <li @click="pay('paypal')"><img :src="require('@/assets/Home/pc_paypal.svg').default" alt="paypal"></li>
 
                 </ul>
@@ -26,15 +26,15 @@
 
         <!-- 预生成订单信息 S -->
         <div class="block">
-            <div class="title">订单商品信息</div>
+            <div class="title">Order line item information</div>
             <div class="goods_list">
 
 
                 <div class="store_list" v-for="(v,k) in data.order" :key="k">
                     <div class="store_title">
                         <div>
-                            <span class="float_left">订单号：{{v.order_no}}</span>
-                            <div class="float_right" v-if="v.coupon_money && v.coupon_money>0"><span style="font-size:14px;color:#666;">优惠金额：</span> <font color="#ca151e">-{{v.coupon_money}}</font></div>
+                            <span class="float_left">order number：{{v.order_no}}</span>
+                            <div class="float_right" v-if="v.coupon_money && v.coupon_money>0"><span style="font-size:14px;color:#666;">Discount amount：</span> <font color="#ca151e">-{{v.coupon_money}}</font></div>
                             <div class="clear"></div>
                         </div>
 
@@ -63,17 +63,17 @@
             </div>
 
             <div class="sum_block">
-                <div class="total">总金额：<span>￥{{data.total}}</span>( {{data.freight_money>0?'包含运费:'+data.freight_money+'元':'免运费'}} )</div>
+                <div class="total">total：<span>${{data.total}}</span>( {{data.freight_money>0?'freight:'+data.freight_money+'$':'Free freight'}} )</div>
                 <div class="clear"></div>
             </div>
         </div>
         <!-- 预生成订单信息 E -->
 
         <!-- 支付密码输入 pay('balance') -->
-        <el-dialog width="30%" v-model="data.visible" title="输入6位支付密码" >
+        <el-dialog width="30%" v-model="data.visible" title="Enter 6-digit payment password" >
             <input class="pay_password" type="password" v-model="data.pay_password" placeholder="pay password" />
             <div style="padding:25px 0 10px 0;text-align:center">
-                <div class="error_btn" @click="pay('balance')">确定支付</div>
+                <div class="error_btn" @click="pay('balance')">Confirm payment</div>
             </div>
         </el-dialog>
 

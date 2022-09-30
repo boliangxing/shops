@@ -10,11 +10,11 @@
                             </el-select>
                         </li>
                         <li style="padding:0;">
-                            <el-input v-model="data.params.order_no" placeholder="订单号" />
+                            <el-input v-model="data.params.order_no" placeholder="order number" />
                         </li>
                         <li style="padding:0;" >
                             <el-date-picker
-                                style="width:250px" 
+                                style="width:250px"
                                 v-model="data.params.created_at"
                                 type="daterange"
                                 :start-placeholder="'Start date'"
@@ -22,13 +22,17 @@
                                 value-format="YYYY-MM-DD"
                             />
                         </li>
-                        <li :class="data.params.is_type==0?'ck':''" @click="typeChange(0)">本周</li>
-                        <li :class="data.params.is_type==1?'ck':''" @click="typeChange(1)">本月</li>
+                        <li :class="data.params.is_type==0?'ck':''" @click="typeChange(0)">This week
+
+                        </li>
+                        <li :class="data.params.is_type==1?'ck':''" @click="typeChange(1)">This month
+
+                        </li>
                         <li :class="'ck'" @click="loadData"> <i class="fa fa-search" /> </li>
-                        
+
                     </ul>
                 </div>
-                <em style="line-height:27px">我的订单</em>
+                <em style="line-height:27px">My Order</em>
             </div>
             <div class="x20"></div>
 
@@ -37,7 +41,7 @@
                 <div class="order_item" v-for="(v,k) in data.list" :key="k">
                     <div class="order_item_title">
                         <span>{{v.created_at}}<font :color="v.order_status==6?'#42b983':'#ca151e'">{{v.order_status_cn||'-'}}</font></span>
-                        订单号：{{v.order_no||'-'}}
+                        order number：{{v.order_no||'-'}}
                     </div>
                     <div class="order_item_list"  @click="$router.push('/user/order/'+v.id)">
                         <ul>
@@ -52,19 +56,25 @@
                     </div>
 
                     <div class="order_item_btn" v-show="v.order_status!=6 || v.order_status !=0">
-                        <div class="default_btn orderbtn" v-if="v.order_status==1" @click="edit_order_status(v.id)">取消订单</div>
-                        <div class="success_btn orderbtn" v-if="v.order_status==1" @click="pay_order(v.id)">立即支付</div>
-                        <div class="default_btn orderbtn" v-if="v.order_status>2 && v.order_status != 5 && v.refund_status != 3 " @click="$router.push('/user/order/'+v.id)">查看物流</div>
-                        <div class="error_btn orderbtn" v-if="v.order_status==3" @click="edit_order_status(v.id,4)">确定收货</div>
-                        <div class="gray_btn orderbtn" v-if="v.order_status==4" @click="$router.push('/user/comment/add/'+v.id)">前往评论</div>
-                        <div class="warn_btn orderbtn" v-if="v.order_status>=2 && v.order_status !=5 && v.refund_status!=2" @click="$router.push('/user/order/refund/'+v.id)">申请售后</div>
-                        <div class="warn_btn orderbtn" v-if="v.order_status==5 || v.refund_status==2" @click="$router.push('/user/order/refund_form/'+v.id)">查看售后</div>
+                        <div class="default_btn orderbtn" v-if="v.order_status==1" @click="edit_order_status(v.id)">cancellation of order</div>
+                        <div class="success_btn orderbtn" v-if="v.order_status==1" @click="pay_order(v.id)">Pay immediately</div>
+                        <div class="default_btn orderbtn" v-if="v.order_status>2 && v.order_status != 5 && v.refund_status != 3 " @click="$router.push('/user/order/'+v.id)">View Logistics
+
+                        </div>
+                        <div class="error_btn orderbtn" v-if="v.order_status==3" @click="edit_order_status(v.id,4)">Confirm receipt
+
+                        </div>
+                        <div class="gray_btn orderbtn" v-if="v.order_status==4" @click="$router.push('/user/comment/add/'+v.id)">Go to comments
+
+                        </div>
+<!--                        <div class="warn_btn orderbtn" v-if="v.order_status>=2 && v.order_status !=5 && v.refund_status!=2" @click="$router.push('/user/order/refund/'+v.id)">申请售后</div>-->
+<!--                        <div class="warn_btn orderbtn" v-if="v.order_status==5 || v.refund_status==2" @click="$router.push('/user/order/refund_form/'+v.id)">查看售后</div>-->
                     </div>
                 </div>
                 <div class="fy" v-if="data.params.total>0">
-                    <el-pagination background 
-                    layout="total, prev, pager, next" 
-                    :page-size="data.params.per_page" 
+                    <el-pagination background
+                    layout="total, prev, pager, next"
+                    :page-size="data.params.per_page"
                     @current-change="handleCurrentChange"
                     :page-count="data.params.last_page"
                     :current-page="data.params.current_page"
@@ -79,7 +89,7 @@
         </div>
 
         <!-- 物流 -->
-        <a-modal v-model="visible" title="物流信息" :footer="null">
+        <a-modal v-model="visible" title="Logistics information" :footer="null">
             <el-timeline v-if="data.order_info.delivery_list.length>0">
                 <el-timeline-item  v-for="(v,k) in data.order_info.delivery_list" :key="k" :color="k==0?'red':'gray'">
                 <p>{{v.context+' '+v.time}}</p>
@@ -161,7 +171,7 @@ export default {
         }
 
         const pay_order = (order_id)=>{
-            let str = window.btoa(JSON.stringify({order_id:[order_id]})); 
+            let str = window.btoa(JSON.stringify({order_id:[order_id]}));
             router.push("/order/pay/"+str);
         }
 
@@ -171,7 +181,7 @@ export default {
             if(e==1) data.params.created_at = [dayjs().date(0).format('YYYY-MM-DD'),dayjs().date(31).format('YYYY-MM-DD')]
             data.params.is_type = e
         }
-        
+
         onMounted(() => {
             if(route.params.status) data.params.order_status = parseInt(route.params.status)
             loadData()
@@ -183,7 +193,7 @@ export default {
             handleCurrentChange,edit_order_status,pay_order,typeChange,loadData,
         }
     },
- 
+
 };
 </script>
 <style lang="scss" scoped>
@@ -249,7 +259,7 @@ export default {
                 margin-right: 4px;
                 left :34px;
             }
-        
+
         }
     }
 }

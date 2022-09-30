@@ -30,7 +30,7 @@
                                 <em @click="edit(vo.cart_id,1)">+</em>
                             </span>
                             <span class="total">￥{{R.formatFloat(vo.goods_price*vo.buy_num,2)}}</span>
-                            <span class="handle" @click="del(vo.cart_id)">移除</span>
+                            <span class="handle" @click="del(vo.cart_id)">Remove</span>
                         </li>
                     </ul>
                 </div>
@@ -40,11 +40,11 @@
 
 
         <div class="cart_th" v-if="data.params.total>0" >
-            <el-checkbox :indeterminate="data.indeterminate" :model-value="data.checkAll" @change="onCheckAllChange">全选</el-checkbox>
+            <el-checkbox :indeterminate="data.indeterminate" :model-value="data.checkAll" @change="onCheckAllChange">Select All</el-checkbox>
             <span class="goods"></span>
             <span class="attr"></span>
             <span class="price"></span>
-            <span class="total btcss" >已选择 <font color="#ca151e">{{data.allCount}}</font> 件，总计 <font color="#ca151e">{{R.formatFloat(data.allPrice)}} </font>元</span>
+            <span class="total btcss" >Selected <font color="#ca151e">{{data.allCount}}</font> pieces，total <font color="#ca151e">{{R.formatFloat(data.allPrice)}} </font>$</span>
             <span class="handle" style="width:140px;text-align:right;"><div class="error_btn" style="padding:5px 30px;" @click="buy">结算</div></span>
         </div>
 
