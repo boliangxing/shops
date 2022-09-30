@@ -1,9 +1,9 @@
 <template>
     <nut-tabbar @tab-switch="tabSwitch" style="position:fixed;z-index:999;bottom:0px;left:0;right:0;">
-        <nut-tabbar-item tab-title="Commodity" icon="home" to="/"></nut-tabbar-item>
-<!--        <nut-tabbar-item tab-title="分类" icon="category" to="/stores"></nut-tabbar-item>-->
-        <nut-tabbar-item tab-title="Cart" icon="Cart" to="/carts"></nut-tabbar-item>
-        <nut-tabbar-item tab-title="Home" icon="My" to="/user"></nut-tabbar-item>
+        <nut-tabbar-item tab-title="Commodity" icon="find" to="/"></nut-tabbar-item>
+        <!--        <nut-tabbar-item tab-title="分类" icon="category" to="/stores"></nut-tabbar-item>-->
+        <nut-tabbar-item tab-title="Cart" icon="category" to="/carts"></nut-tabbar-item>
+        <nut-tabbar-item tab-title="Home" icon="home" to="/user"></nut-tabbar-item>
     </nut-tabbar>
 
 </template>

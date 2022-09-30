@@ -123,14 +123,13 @@ export default {
             total:0, //总页数
             list:[],
             searchConfig:[
-                {label:'全部订单',value:-1},
-                {label:'订单取消',value:0},
-                {label:'等待支付',value:1},
-                {label:'等待发货',value:2},
-                {label:'确认收货',value:3},
-                {label:'等待评论',value:4},
-                {label:'售后订单',value:5},
-                {label:'订单完成',value:6},
+                {label:'All',value:-1},
+                {label:'Cancel',value:0},
+                {label:'Waiting for pay',value:1},
+                {label:'Waiting for delivery',value:2},
+                {label:'Confirm receipt' ,value:3},
+                    {label:'Waiting for comments' ,value:4},
+                {label:'Order completion',value:6},
             ],
             order_info:{
                 delivery_list:[],

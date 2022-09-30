@@ -295,7 +295,7 @@ export default {
             }
             &:nth-child(1) i{
                 top:-2px;
-                font-size: 24px;
+                font-size: 17px;
             }
             &:nth-child(2) i{
                 left :36px;
@@ -316,7 +316,7 @@ export default {
             }
             float: left;
             text-align: center;
-            width: 100px;
+            width: 70px;
             i{
                 position: absolute;
                 font-size: 26px;

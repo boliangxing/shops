@@ -13,7 +13,7 @@
 
         <div class="cart_table" v-if="data.params.total>0">
             <div class="store_list" v-for="(v,k) in data.list" :key="k">
-                <div class="store_title"><el-checkbox :indeterminate="v.css" :model-value='v.checked' @change="onCheckAllStoreChange(k)">{{v.store_name}}</el-checkbox><span class="open_store" @click="$router.push('/store/'+v.store_id)">进入店铺</span></div>
+                <div class="store_title"><el-checkbox :indeterminate="v.css" :model-value='v.checked' @change="onCheckAllStoreChange(k)">{{v.store_name}}</el-checkbox><span class="open_store" @click="$router.push('/store/'+v.store_id)">join</span></div>
                 <div class="goods_list">
                     <ul>
                         <li v-for="(vo,key) in v.cart_list" :key="key">
@@ -45,7 +45,7 @@
             <span class="attr"></span>
             <span class="price"></span>
             <span class="total btcss" >Selected <font color="#ca151e">{{data.allCount}}</font> pieces，total <font color="#ca151e">{{R.formatFloat(data.allPrice)}} </font>$</span>
-            <span class="handle" style="width:140px;text-align:right;"><div class="error_btn" style="padding:5px 30px;" @click="buy">结算</div></span>
+            <span class="handle" style="width:140px;text-align:right;"><div class="error_btn" style="padding:5px 30px;" @click="buy">Buy</div></span>
         </div>
 
 
